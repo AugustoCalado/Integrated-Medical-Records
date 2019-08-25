@@ -1,4 +1,4 @@
-package com.integrated.medical.recors
+package com.integrated.medical.records
 
 import org.junit.Test
 import org.junit.runner.RunWith

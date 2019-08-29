@@ -4,7 +4,7 @@ import com.integrated.medical.records.enums.GenderTypes
 import javax.persistence.*
 
 @Entity
-@Table(name = "PATIENTS",  schema = "MEDICAL_RECORDS")
+@Table(name = "PATIENTS", schema = "MEDICAL_RECORDS")
 data class Patient(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,4 +36,7 @@ data class Patient(
 
     @OneToOne(mappedBy = "patient")
     lateinit var user: User
+
+    @OneToMany(mappedBy = "patient")
+    lateinit var patientVaccines: List<PatientVaccines>
 }

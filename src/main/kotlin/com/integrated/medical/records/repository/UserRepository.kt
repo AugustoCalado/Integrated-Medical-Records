@@ -1,4 +1,4 @@
-package com.integrated.medical.records.repository.impl
+package com.integrated.medical.records.repository
 
 import com.integrated.medical.records.domain.User
 import org.springframework.data.repository.CrudRepository

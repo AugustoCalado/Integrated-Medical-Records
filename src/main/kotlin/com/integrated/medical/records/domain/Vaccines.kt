@@ -9,17 +9,17 @@ data class Vaccines(
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idVACCINES")
+        @Column(name = "idVACCINES", nullable = false, unique = true)
         val idVaccine: Int,
 
         @Column(name = "NAME")
         @NotBlank
         val name: String,
 
-        @Column(name = "DESCRIPTION")
+        @Column(name = "DESCRIPTION", length = 1000)
         val description: String,
 
-        @Column(name = "N_DOSES")
+        @Column(name = "N_DOSES", length = 2)
         val nDoses: Int
 ) {
     @OneToMany(mappedBy = "vaccines")

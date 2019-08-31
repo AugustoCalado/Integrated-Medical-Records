@@ -10,8 +10,7 @@ class HealthInsurance (
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idHEALTH_INSURANCE")
-        @NotNull
+        @Column(name = "idHEALTH_INSURANCE", nullable = false, unique = true)
         val idHealthInsurance: Int,
 
 

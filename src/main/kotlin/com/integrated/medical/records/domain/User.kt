@@ -11,19 +11,19 @@ data class User(
         @Column(name = "idUSERS", nullable = false, unique = true)
         val idUser: Int,
 
-        @Column(name = "NAME_LOGIN")
+        @Column(name = "NAME_LOGIN", length = 60)
         @NotBlank
         val nameLogin: String,
 
-        @Column(name = "EMAIL")
+        @Column(name = "EMAIL", length = 60)
         @NotBlank
         val email: String,
 
-        @Column(name = "PASSWORD")
+        @Column(name = "PASSWORD", length = 60)
         @NotBlank
         val password: String,
 
-        @Column(name = "CELL_PHONE")
+        @Column(name = "CELL_PHONE", length = 14)
         val cellPhone:String
 ) {
         @OneToOne

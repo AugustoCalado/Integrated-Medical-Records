@@ -15,7 +15,7 @@ data class PatientVaccines(
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idVACCINES_has_PATIENTScol")
+        @Column(name = "idVACCINES_has_PATIENTScol", nullable = false, unique = true)
         val idPatientVaccines: Int,
 
         @ManyToOne
@@ -36,7 +36,7 @@ data class PatientVaccines(
         val placeVaccineApplied: String
 
 
-) : Serializable{
+) : Serializable {
 
 /*        @OneToMany(mappedBy = "patientVaccines")
         lateinit var patientVaccinesHasVaccines: List<PatientVaccinesHasVaccines>*/

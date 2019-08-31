@@ -35,8 +35,11 @@ data class Patient(
 ) {
 
     @OneToOne(mappedBy = "patient")
-    lateinit var user: User
+    lateinit var user: List<User>
 
     @OneToMany(mappedBy = "patient")
     lateinit var patientVaccines: List<PatientVaccines>
+
+    @OneToMany(mappedBy = "patient")
+    lateinit var healthInsurance: List<HealthInsurance>
 }

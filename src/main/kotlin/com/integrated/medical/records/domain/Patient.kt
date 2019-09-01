@@ -26,12 +26,12 @@ data class Patient(
         @NotBlank
         val gender: GenderTypes,
 
-        @Temporal(value = TemporalType.DATE)
+//        @Temporal(value = TemporalType.DATE)
         @Column(name = "BIRTHDATE", insertable = false, updatable = false)
         @NotNull
         val birthDate: LocalDate,
 
-        @Column(name = "BIRTHDATE", length = 300)
+        @Column(name = "BIRTHPLACE", length = 300)
         val birthPlace: String,
 
         @Column(name = "FATHER_NAME", length = 150)
@@ -42,7 +42,7 @@ data class Patient(
 ) {
 
     @OneToOne(mappedBy = "patient")
-    lateinit var user: List<User>
+    lateinit var user: User
 
     @OneToMany(mappedBy = "patient")
     lateinit var patientVaccines: List<PatientVaccines>

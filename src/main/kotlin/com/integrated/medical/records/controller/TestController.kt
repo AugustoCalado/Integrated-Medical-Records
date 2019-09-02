@@ -1,3 +1,4 @@
+/*
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.service.PatientService
@@ -18,4 +19,4 @@ class TestController {
     fun printPatients(){
         patientService.getAllPatients()
     }
-}
+}*/

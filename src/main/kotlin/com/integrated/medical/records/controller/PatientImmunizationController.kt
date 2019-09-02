@@ -6,20 +6,27 @@ import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.io.Serializable
 import java.time.LocalDate
 
 @Api(value = "Immunization Patient Management System")
-@RestController(value = "/patient/immunization")
+@RestController
+@RequestMapping("/patient-immunizations")
 class PatientImmunizationController {
 
     //TODO Introduce some way to authorize and authenticate
     //TODO include Swagger
 
+    @GetMapping("/test")
+    fun testController(): ResponseEntity<String> {
+        return ResponseEntity.ok("{Teste}")
+    }
+
 
     @ApiOperation(value = "Get all vaccines of a patient given the ID")
-    @GetMapping("patient-immunizations/{idPatient}", produces = [MediaType.APPLICATION_JSON_VALUE])
+    @GetMapping("/{idPatient}", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getAllPatientImmunizations(
             @PathVariable(value = "idPatient", required = true) idPatient: Int
     ): ResponseEntity<List<PatientVaccinesDTO>> {
@@ -33,7 +40,7 @@ class PatientImmunizationController {
     }
 
     @ApiOperation(value = "Get a specific vaccine of a patient")
-    @GetMapping("patient-immunization/{idPatient}", produces = [MediaType.APPLICATION_JSON_VALUE])
+    @GetMapping("/{idPatient}", produces = [MediaType.APPLICATION_JSON_VALUE], params = ["idPatientVaccine", "idPatient"])
     fun getPattientImmunization(
             @PathVariable(value = "idPatient", required = true) idPatient: Int,
             @RequestParam(name = "idPatientVaccine", required = true) idPatientVaccines: Int
@@ -58,7 +65,8 @@ class PatientImmunizationController {
             @RequestParam(name = "place") placeImmunization: String
     ): ResponseEntity<T> {
 
-        /*This endpoint is going to receive parameters to registry one patient vaccination  */
+//This endpoint is going to receive parameters to registry one patient vaccination
+
 
         return ResponseEntity(HttpStatus.OK)
     }
@@ -74,6 +82,8 @@ class PatientImmunizationController {
 
         return ResponseEntity(HttpStatus.OK)
     }
+
+
 
 
 }

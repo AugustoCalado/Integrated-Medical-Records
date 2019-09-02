@@ -1,3 +1,4 @@
+/*
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.VaccinesDTO
@@ -33,4 +34,4 @@ class VaccineController {
         return ResponseEntity(HttpStatus.OK)
     }
 
-}
+}*/

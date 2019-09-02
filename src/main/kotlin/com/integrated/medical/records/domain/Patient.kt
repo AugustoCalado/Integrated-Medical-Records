@@ -14,21 +14,21 @@ data class Patient(
         @Column(name = "idPATIENTS", nullable = false, unique = true)
         val idPatient: Int,
 
-        @Column(name = "NAME", length = 150)
         @NotBlank
+        @Column(name = "NAME", length = 150)
         val name: String,
 
-        @Column(name = "CPF", length = 10)
         @NotBlank
+        @Column(name = "CPF", length = 11)
         val cpf: String,
 
-        @Column(name = "GENDER")
         @NotBlank
+        @Column(name = "GENDER")
+        @Enumerated(EnumType.STRING)
         val gender: GenderTypes,
 
-//        @Temporal(value = TemporalType.DATE)
-        @Column(name = "BIRTHDATE", insertable = false, updatable = false)
         @NotNull
+        @Column(name = "BIRTHDATE", insertable = false, updatable = false)
         val birthDate: LocalDate,
 
         @Column(name = "BIRTHPLACE", length = 300)

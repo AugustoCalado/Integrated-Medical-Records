@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository
 interface PatientRepository: CrudRepository<Patient,Int>{
 
     fun findByName(name:String)
+
+    fun findAllByBirthDateNotNull():List<Patient>
 }

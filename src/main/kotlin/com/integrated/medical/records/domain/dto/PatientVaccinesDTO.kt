@@ -1,7 +1,7 @@
 package com.integrated.medical.records.domain.dto
 
 import com.integrated.medical.records.domain.Patient
-import com.integrated.medical.records.domain.Vaccines
+import com.integrated.medical.records.domain.Vaccine
 import java.time.LocalDate
 
 
@@ -9,7 +9,7 @@ data class PatientVaccinesDTO(
 
         val idPatientVaccines: Int,
 
-        val vaccines: Vaccines,
+        val vaccine: Vaccine,
 
         val patient: Patient,
 

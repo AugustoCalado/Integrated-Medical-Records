@@ -26,7 +26,7 @@ data class ImmunizationSchedule(
 
         @ManyToOne(cascade = arrayOf(CascadeType.ALL))
         @JoinColumn(name = "VACCINES_idVACCINES")
-        val vaccine:Vaccines
+        val vaccine:Vaccine
 
 
 ) {

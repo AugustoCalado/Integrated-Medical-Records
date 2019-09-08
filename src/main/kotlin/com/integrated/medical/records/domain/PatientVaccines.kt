@@ -1,12 +1,9 @@
 package com.integrated.medical.records.domain
 
-import org.jetbrains.annotations.NotNull
 import java.io.Serializable
 import java.time.LocalDate
-import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotEmpty
 
 
 @Entity
@@ -21,7 +18,7 @@ data class PatientVaccines(
         @ManyToOne
         @JoinColumn(name = "VACCINES_idVACCINES")
         @NotBlank
-        val vaccines: Vaccines,
+        val vaccine: Vaccine,
 
         @ManyToOne
         @JoinColumn(name = "PATIENTS_idPATIENTS")

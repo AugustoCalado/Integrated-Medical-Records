@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank
 
 @Entity
 @Table(name = "VACCINES", schema = "MEDICAL_RECORDS")
-data class Vaccines(
+data class Vaccine(
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +22,6 @@ data class Vaccines(
         @Column(name = "N_DOSES", length = 2)
         val nDoses: Int
 ) {
-    @OneToMany(mappedBy = "vaccines")
-    lateinit var patientVaccines: List<PatientVaccines>
+    //@OneToMany(mappedBy = "vaccine")
+    //lateinit var patientVaccines: List<PatientVaccines>
 }

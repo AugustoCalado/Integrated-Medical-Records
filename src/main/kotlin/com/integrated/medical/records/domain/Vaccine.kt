@@ -20,7 +20,7 @@ data class Vaccine(
         val description: String,
 
         @Column(name = "N_DOSES", length = 2)
-        val nDoses: Int
+        val numberDoses: Int
 ) {
     //@OneToMany(mappedBy = "vaccine")
     //lateinit var patientVaccines: List<PatientVaccines>

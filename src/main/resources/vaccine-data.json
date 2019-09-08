@@ -1,0 +1,17 @@
+[
+
+  {
+    "_class": "com.integrated.medical.records.domain.Vaccine",
+    "idVaccine": 1,
+    "name": "Vaccine One",
+    "description": "One disease vaccine ",
+    "numberDoses": 1
+  },
+  {
+    "_class": "com.integrated.medical.records.domain.Vaccine",
+    "idVaccine": 2,
+    "name": "Vaccine Two",
+    "description": "Two disease vaccine ",
+    "numberDoses": 1
+  }
+]

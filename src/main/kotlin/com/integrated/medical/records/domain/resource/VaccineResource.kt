@@ -15,7 +15,7 @@ class VaccineResource(
     constructor(vaccine: Vaccine) : this(
             vaccine.name,
             vaccine.description,
-            vaccine.nDoses
+            vaccine.numberDoses
     ) {
         print("Augusto")
     }

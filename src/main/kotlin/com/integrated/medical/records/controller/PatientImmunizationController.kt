@@ -25,7 +25,7 @@ class PatientImmunizationController {
     }
 
 
-    @ApiOperation(value = "Get all vaccines of a patient given the ID")
+    @ApiOperation(value = "Get all vaccine of a patient given the ID")
     @GetMapping("/{idPatient}", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getAllPatientImmunizations(
             @PathVariable(value = "idPatient", required = true) idPatient: Int
@@ -65,7 +65,7 @@ class PatientImmunizationController {
             @RequestParam(name = "place") placeImmunization: String
     ): ResponseEntity<T> {
 
-//This endpoint is going to receive parameters to registry one patient vaccination
+    //This endpoint is going to receive parameters to registry one patient vaccination
 
 
         return ResponseEntity(HttpStatus.OK)

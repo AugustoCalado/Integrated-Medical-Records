@@ -1,4 +1,3 @@
-/*
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.VaccinesDTO
@@ -6,7 +5,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@RestController(value = "/vaccines")
+@RestController
+@RequestMapping(path = ["/vaccine"])
 class VaccineController {
 
     @GetMapping("/get/all")
@@ -34,4 +34,4 @@ class VaccineController {
         return ResponseEntity(HttpStatus.OK)
     }
 
-}*/
+}

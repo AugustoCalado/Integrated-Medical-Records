@@ -7,21 +7,21 @@ import javax.validation.constraints.NotBlank
 
 
 @Entity
-@Table(name = "VACCINES_has_PATIENTS", schema = "MEDICAL_RECORDS")
+@Table(name = "VACCINES_HAS_PATIENTS", schema = "MEDICAL_RECORDS")
 data class PatientVaccines(
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idVACCINES_has_PATIENTScol", nullable = false, unique = true)
+        @Column(name = "IDVACCINES_HAS_PATIENT", nullable = false, unique = true)
         val idPatientVaccines: Int,
 
         @ManyToOne
-        @JoinColumn(name = "VACCINES_idVACCINES")
+        @JoinColumn(name = "ID_VACCINE")
         @NotBlank
         val vaccine: Vaccine,
 
         @ManyToOne
-        @JoinColumn(name = "PATIENTS_idPATIENTS")
+        @JoinColumn(name = "ID_PATIENT")
         @NotBlank
         val patient: Patient,
 

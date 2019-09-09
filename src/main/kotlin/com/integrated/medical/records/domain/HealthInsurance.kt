@@ -10,7 +10,7 @@ class HealthInsurance (
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idHEALTH_INSURANCE", nullable = false, unique = true)
+        @Column(name = "ID_HEALTH_INSURANCE", nullable = false, unique = true)
         val idHealthInsurance: Int,
 
 
@@ -35,7 +35,7 @@ class HealthInsurance (
 ) {
 
     @ManyToOne
-    @JoinColumn(name = "PATIENTS_idPATIENTS")
+    @JoinColumn(name = "ID_PATIENT")
     lateinit var patient: Patient
 
 }

@@ -9,7 +9,7 @@ data class ImmunizationSchedule(
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idIMMUNIZATION_SCHEDULE", nullable = false, unique = true)
+        @Column(name = "ID_IMMUNIZATION_SCHEDULE", nullable = false, unique = true)
         val idVaccine: Int,
 
         @Column(name = "START_AGE", length = 3)
@@ -25,7 +25,7 @@ data class ImmunizationSchedule(
         val recomendedDosage: String,
 
         @ManyToOne(cascade = arrayOf(CascadeType.ALL))
-        @JoinColumn(name = "VACCINES_idVACCINES")
+        @JoinColumn(name = "ID_VACCINE")
         val vaccine:Vaccine
 
 

@@ -9,7 +9,7 @@ data class Vaccine(
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idVACCINES", nullable = false, unique = true)
+        @Column(name = "ID_VACCINE", nullable = false, unique = true)
         val idVaccine: Int,
 
         @Column(name = "NAME")

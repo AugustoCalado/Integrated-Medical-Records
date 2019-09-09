@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull
 data class Patient(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idPATIENTS", nullable = false, unique = true)
+        @Column(name = "ID_PATIENT", nullable = false, unique = true)
         val idPatient: Int,
 
         @NotBlank

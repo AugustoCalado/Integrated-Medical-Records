@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "idUSERS", nullable = false, unique = true)
+        @Column(name = "ID_USER", nullable = false, unique = true)
         val idUser: Int,
 
         @Column(name = "NAME_LOGIN", length = 60)
@@ -27,6 +27,6 @@ data class User(
         val cellPhone:String
 ) {
         @OneToOne
-        @JoinColumn(name = "PATIENTS_idPATIENTS")
+        @JoinColumn(name = "ID_PATIENT")
         lateinit var patient: Patient
 }

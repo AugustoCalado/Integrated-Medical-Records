@@ -4,12 +4,13 @@ import com.integrated.medical.records.domain.dto.VaccinesDTO
 import com.integrated.medical.records.repository.VaccineRepository
 import org.modelmapper.ModelMapper
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@RestController
-//@RepositoryRestController
+//@RestController
+@RepositoryRestController
 @RequestMapping(path = ["/vaccine"])
 class VaccineController {
 

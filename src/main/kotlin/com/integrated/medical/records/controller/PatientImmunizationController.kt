@@ -13,6 +13,7 @@ import java.time.LocalDate
 
 @Api(value = "Immunization Patient Management System")
 @RestController
+//@RepositoryRestController
 @RequestMapping("/patient-immunizations")
 class PatientImmunizationController {
 

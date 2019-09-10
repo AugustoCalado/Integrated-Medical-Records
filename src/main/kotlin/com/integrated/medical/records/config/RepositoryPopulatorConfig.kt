@@ -13,7 +13,11 @@ class RepositoryPopulatorConfig {
     @Bean
     fun getRespositoryPopulator(): Jackson2RepositoryPopulatorFactoryBean {
         val factory = Jackson2RepositoryPopulatorFactoryBean()
-        factory.setResources(arrayOf<Resource>(ClassPathResource("vaccine-data.json")))
+        factory.setResources(arrayOf<Resource>(
+                ClassPathResource("vaccine-data.json")
+            )
+        )
         return factory
     }
+
 }

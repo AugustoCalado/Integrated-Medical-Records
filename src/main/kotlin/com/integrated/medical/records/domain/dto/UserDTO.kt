@@ -3,17 +3,17 @@ package com.integrated.medical.records.domain.dto
 import com.integrated.medical.records.domain.Patient
 
 class UserDTO(
-        val idUser: Int,
+        var idUser: Int,
 
-        val nameLogin: String,
+        var nameLogin: String,
 
-        val email: String,
+        var email: String,
 
-        val password: String,
+        var password: String,
 
-        val cellPhone: String,
+        var cellPhone: String,
 
-        val patient: Patient
+        var patient: Patient
 
 ) {
 }

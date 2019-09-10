@@ -7,13 +7,13 @@ import java.time.LocalDate
 
 data class PatientVaccinesDTO(
 
-        val idPatientVaccines: Int,
+        var idPatientVaccines: Int,
 
-        val vaccine: Vaccine,
+        var vaccine: Vaccine,
 
-        val patient: Patient,
+        var patient: Patient,
 
-        val dataVaccine: LocalDate,
+        var dataVaccine: LocalDate,
 
-        val placeVaccineApplied: String) {
+        var placeVaccineApplied: String) {
 }

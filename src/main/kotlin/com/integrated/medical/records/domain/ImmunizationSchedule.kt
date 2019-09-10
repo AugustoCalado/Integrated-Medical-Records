@@ -10,7 +10,7 @@ data class ImmunizationSchedule(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name = "ID_IMMUNIZATION_SCHEDULE", nullable = false, unique = true)
-        val idVaccine: Int,
+        val idImmunizationSchedule: Int,
 
         @Column(name = "START_AGE", length = 3)
         @NotBlank

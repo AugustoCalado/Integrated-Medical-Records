@@ -9,7 +9,7 @@ import org.springframework.core.io.Resource;
 
 @Configuration
 class RepositoryPopulatorConfig {
-
+/*
     @Bean
     fun getRespositoryPopulator(): Jackson2RepositoryPopulatorFactoryBean {
         val factory = Jackson2RepositoryPopulatorFactoryBean()
@@ -18,6 +18,8 @@ class RepositoryPopulatorConfig {
             )
         )
         return factory
-    }
+    }*/
+    
+    //TODO: Ask stackoverflow how to build complex json
 
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "_class": "com.integrated.medical.records.domain.HealthInsurance",
+    "healthInsuranceCompany": "Bradesco",
+    "healthInsuranceName": "Nacional Plus",
+    "insuranceCardNumber": 123456789,
+    "cardExpirationDate":1121
+  },
+  {
+    "_class": "com.integrated.medical.records.domain.HealthInsurance",
+    "healthInsuranceCompany": "CarePlus",
+    "healthInsuranceName": "Top Plan",
+    "insuranceCardNumber": 123456789,
+    "cardExpirationDate":1125
+  }
+]

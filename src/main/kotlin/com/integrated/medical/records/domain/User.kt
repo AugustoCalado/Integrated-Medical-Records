@@ -4,7 +4,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "USERS", schema = "MEDICAL_RECORDS")
+@Table(name = "USER", schema = "MEDICAL_RECORDS")
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)

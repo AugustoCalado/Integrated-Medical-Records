@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank
 
 
 @Entity
-@Table(name = "VACCINES_HAS_PATIENTS", schema = "MEDICAL_RECORDS")
+@Table(name = "VACCINE_HAS_PATIENT", schema = "MEDICAL_RECORDS")
 data class PatientVaccines(
 
         @Id

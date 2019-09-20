@@ -4,7 +4,7 @@ import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
 @Entity
-@Table(name = "VACCINES", schema = "MEDICAL_RECORDS")
+@Table(name = "VACCINE", schema = "MEDICAL_RECORDS")
 data class Vaccine(
 
         @Id

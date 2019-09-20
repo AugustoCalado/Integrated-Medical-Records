@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 @Entity
-@Table(name = "PATIENTS", schema = "MEDICAL_RECORDS")
+@Table(name = "PATIENT", schema = "MEDICAL_RECORDS")
 data class Patient(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)

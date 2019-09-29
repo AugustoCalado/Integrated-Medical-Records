@@ -2,6 +2,7 @@ package com.integrated.medical.records.domain.dto
 
 import com.integrated.medical.records.domain.Patient
 import com.integrated.medical.records.domain.Vaccine
+import java.io.Serializable
 import java.time.LocalDate
 
 
@@ -15,5 +16,6 @@ data class PatientVaccinesDTO(
 
         var dataVaccine: LocalDate,
 
-        var placeVaccineApplied: String) {
+        var placeVaccineApplied: String
+) : Serializable {
 }

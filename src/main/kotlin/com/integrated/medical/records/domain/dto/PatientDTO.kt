@@ -4,9 +4,11 @@ import com.integrated.medical.records.domain.HealthInsurance
 import com.integrated.medical.records.domain.PatientVaccines
 import com.integrated.medical.records.domain.User
 import com.integrated.medical.records.enums.GenderTypes
+import java.io.Serializable
 import java.time.LocalDate
 
-class PatientDTO (
+class PatientDTO(
+
         var idPatient: Int,
 
         var name: String,
@@ -28,6 +30,6 @@ class PatientDTO (
         var patientVaccines: List<PatientVaccines>,
 
         var healthInsurance: List<HealthInsurance>
-) {
+) : Serializable {
 
 }

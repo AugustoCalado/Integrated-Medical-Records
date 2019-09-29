@@ -1,6 +1,7 @@
 package com.integrated.medical.records.domain.dto
 
 import com.integrated.medical.records.domain.Patient
+import java.io.Serializable
 
 class UserDTO(
         var idUser: Int,
@@ -15,5 +16,5 @@ class UserDTO(
 
         var patient: Patient
 
-) {
+) : Serializable {
 }

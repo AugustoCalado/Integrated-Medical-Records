@@ -9,9 +9,8 @@ import javax.validation.constraints.NotNull
 data class MedicalExamResult(
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "ID_MEDICAL_EXAM_RESULT", nullable = false, unique = true)
-        val idMedicalExam: Int,
+        //@Column(name = "ID_MEDICAL_EXAM_RESULT", nullable = false, unique = true)
+        val idMedicalExamResult: Int,
 
         @Column(name = "EXAM_OBSERVATION", length = 500)
         val resultObservation: String,
@@ -23,6 +22,6 @@ data class MedicalExamResult(
         //TODO create new field with information about where and who perform the exam
 ) {
     @OneToOne
-    @JoinColumn(name = "ID_MEDICAL_EXAM")
+    @MapsId
     lateinit var medicalExam: MedicalExam
 }

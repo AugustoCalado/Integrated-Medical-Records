@@ -63,6 +63,12 @@ data class MedicalRecord(
     @JoinColumn(name = "ID_PATIENT")
     lateinit var patient: Patient
 
-    @OneToOne(mappedBy = "medicalRecord")
-    lateinit var vitalSigns: VitalSigns
+    @OneToMany(mappedBy = "medicalRecord")
+    lateinit var medicalExam: List<MedicalExam>
+
+    @OneToMany(mappedBy = "medicalRecord")
+    lateinit var medicalPrescription: List<MedicalPrescription>
+
+    @OneToMany(mappedBy = "medicalRecord")
+    lateinit var medicalFacility: List<MedicalFacility>
 }

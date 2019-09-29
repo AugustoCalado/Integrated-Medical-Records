@@ -8,9 +8,8 @@ import javax.validation.constraints.NotNull
 data class DoctorCredential(
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "ID_DOCTOR_CREDENTIAL", nullable = false, unique = true)
-        val idFamilyHistoric: Int,
+//      @Column(name = "ID_DOCTOR_CREDENTIAL", nullable = false, unique = true)
+        val idDoctorCredential: Int,
 
         @Column(name = "NAME", length = 200)
         @NotNull
@@ -21,7 +20,8 @@ data class DoctorCredential(
         @NotNull
         val crm: String
 ) {
-    @ManyToOne
+    @OneToOne
+    @MapsId
     @JoinColumn(name = "ID_MEDICAL_RECORD")
     lateinit var medicalRecord: MedicalRecord
 }

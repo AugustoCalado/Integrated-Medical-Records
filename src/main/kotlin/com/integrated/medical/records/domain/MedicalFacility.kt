@@ -9,7 +9,7 @@ data class MedicalFacility(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name = "ID_MEDICAL_FACILITY", nullable = false, unique = true)
-        val idFamilyHistoric: Int,
+        val idMedicalFacility: Int,
 
         @Column(name = "NAME", length = 200)
         @NotNull

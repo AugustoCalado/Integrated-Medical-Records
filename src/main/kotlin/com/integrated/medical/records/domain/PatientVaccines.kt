@@ -34,7 +34,4 @@ data class PatientVaccines(
 
 
 ) : Serializable {
-
-/*        @OneToMany(mappedBy = "patientVaccines")
-        lateinit var patientVaccinesHasVaccines: List<PatientVaccinesHasVaccines>*/
 }

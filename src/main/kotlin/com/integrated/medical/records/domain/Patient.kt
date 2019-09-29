@@ -48,5 +48,8 @@ data class Patient(
     lateinit var patientVaccines: List<PatientVaccines>
 
     @OneToMany(mappedBy = "patient")
+    lateinit var medicalRecord: List<MedicalRecord>
+
+    @OneToMany(mappedBy = "patient")
     lateinit var healthInsurance: List<HealthInsurance>
 }

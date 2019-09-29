@@ -30,7 +30,4 @@ data class MedicalExam(
     @JoinColumn(name = "ID_MEDICAL_RECORD")
     lateinit var medicalRecord: MedicalRecord
 
-    @OneToOne(mappedBy = "medicalExam")
-    lateinit var medicalExamResult: MedicalExamResult
-
 }

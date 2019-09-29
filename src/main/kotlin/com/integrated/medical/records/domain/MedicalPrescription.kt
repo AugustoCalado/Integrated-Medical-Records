@@ -10,7 +10,7 @@ data class MedicalPrescription(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name = "ID_MEDICAL_PRESCRIPTION", nullable = false, unique = true)
-        val idFamilyHistoric: Int,
+        val idMedicalPrescription: Int,
 
         @Column(name = "PRESCRIPTION", length = 1050)
         @NotNull

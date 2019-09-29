@@ -7,10 +7,9 @@ import javax.validation.constraints.NotNull
 @Entity
 @Table(name = "VITAL_SIGNS", schema = "MEDICAL_RECORDS")
 data class VitalSigns(
+
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "ID_VITAL_SIGNS", nullable = false, unique = true)
-        val idFamilyHistoric: Int,
+        val idVitalSigns: Int,
 
         @Column(name = "SYSTOLIC_PRESSURE")
         @NotNull
@@ -49,10 +48,11 @@ data class VitalSigns(
 
 
 ) {
-        // TODO self-relationship
+    // TODO self-relationship
 
-        @OneToOne
-        @JoinColumn(name = "ID_MEDICAL_RECORD")
-        lateinit var medicalRecord: MedicalRecord
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JoinColumn(name = "ID_MEDICAL_RECORD")
+    lateinit var medicalRecord: MedicalRecord
 
 }

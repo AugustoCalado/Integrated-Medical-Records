@@ -14,11 +14,11 @@ data class MedicalExamResult(
         val idMedicalExam: Int,
 
         @Column(name = "EXAM_OBSERVATION", length = 500)
-        @NotNull
         val resultObservation: String,
 
-        @Column(name = "PRESCRIPTION_DATE", nullable = false)
-        val generatedDate: LocalDate
+        @Column(name = "RESULT_GENERATION_DATA")
+        @NotNull
+        val resultGenerationData: LocalDate
 
         //TODO create new field with information about where and who perform the exam
 ) {

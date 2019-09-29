@@ -16,8 +16,8 @@ data class MedicalPrescription(
         @NotNull
         val prescription: String,
 
-
-        @Column(name = "PRESCRIPTION_DATE", nullable = false)
+        @Column(name = "PRESCRIPTION_DATE")
+        @NotNull
         val prescriptionDate: LocalDate
 ) {
 

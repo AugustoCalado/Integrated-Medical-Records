@@ -17,11 +17,11 @@ data class MedicalExam(
         @NotNull
         val examName: String,
 
-        @Column(name = "EXAM_OBSERVATION", length = 500)
-        @NotNull
+        @Column(name = "EXAM_OBSERVATION", length = 750)
         val examObservation: String,
 
-        @Column(name = "PRESCRIPTION_DATE", nullable = false)
+        @Column(name = "PRESCRIPTION_DATE")
+        @NotNull
         val prescriptionDate: LocalDate
 
 

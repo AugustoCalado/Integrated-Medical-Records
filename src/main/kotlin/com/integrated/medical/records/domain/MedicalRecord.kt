@@ -2,6 +2,7 @@ package com.integrated.medical.records.domain
 
 import java.time.LocalDate
 import javax.persistence.*
+import javax.validation.constraints.NotNull
 
 
 @Entity
@@ -13,13 +14,16 @@ data class MedicalRecord(
         @Column(name = "ID_MEDICAL_RECORD", nullable = false, unique = true)
         val idMedicalRecord: Int,
 
-        @Column(name = "MAIN_COMPLAIN", nullable = false, length = 750)
+        @Column(name = "MAIN_COMPLAIN", length = 750)
+        @NotNull
         val mainComplain: String,
 
-        @Column(name = "CURRENT_DISEASE_INFORMATION", nullable = false, length = 750)
+        @Column(name = "CURRENT_DISEASE_INFORMATION", length = 750)
+        @NotNull
         val currentDiseaseInfo: String,
 
-        @Column(name = "DIRECTED_ANAMNESIS", nullable = false, length = 1050)
+        @Column(name = "DIRECTED_ANAMNESIS", length = 1050)
+        @NotNull
         val directedAnamnesis: String,
 
         @Column(name = "ECTOSCOPY", length = 750)
@@ -43,10 +47,12 @@ data class MedicalRecord(
         @Column(name = "PE_NEUROLOGICAL", length = 750)
         val peNeurological: String,
 
-        @Column(name = "DIAGNOSTIC", nullable = false, length = 2050)
+        @Column(name = "DIAGNOSTIC", length = 2050)
+        @NotNull
         val diagnostic: String,
 
-        @Column(name = "MEDICAL_RECORD_DATE", nullable = false)
+        @Column(name = "MEDICAL_RECORD_DATE")
+        @NotNull
         val medicalRecordDate: LocalDate
 
 ) {

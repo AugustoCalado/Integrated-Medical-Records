@@ -20,11 +20,11 @@ data class VitalSigns(
         val diastolicPressure: Int,
 
         @Column(name = "HEART_RATE")
-        val heartRate: Int,
+        val heartRate: Int?,
         //batidas por minuto (rpm)
 
         @Column(name = "RESPIRATORY_FREQUENCY")
-        val respiratoryFrequency: Int,
+        val respiratoryFrequency: Int?,
         //respirações por minuto (rpm)
 
         @Column(name = "BLOOD_TEMPERATURE")
@@ -32,7 +32,7 @@ data class VitalSigns(
         val bloodTemperature: Double,
 
         @Column(name = "BODY_MASS_INDEX")
-        val bodyMassIndex: Double,
+        val bodyMassIndex: Double?,
 
         @Column(name = "WEIGHT")
         @NotNull

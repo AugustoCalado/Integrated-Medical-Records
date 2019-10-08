@@ -13,7 +13,7 @@ data class MedicalExamResult(
         val idMedicalExamResult: Int,
 
         @Column(name = "EXAM_OBSERVATION", length = 500)
-        val resultObservation: String,
+        val resultObservation: String?,
 
         @Column(name = "RESULT_GENERATION_DATA")
         @NotNull

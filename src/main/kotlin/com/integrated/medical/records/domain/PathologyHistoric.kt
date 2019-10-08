@@ -19,14 +19,14 @@ data class PathologyHistoric(
         val name:String,
 
         @Column(name = "OBSERVATION", length = 500)
-        val observation: String,
+        val observation: String?,
 
         @Column(name = "WAS_IT_TREATED")
         @NotNull
         val wasItTreated: Boolean,
 
-        @Column(name = "IDENTIFICATION_DATe")
-        val dataVaccine: LocalDate
+        @Column(name = "IDENTIFICATION_DATE")
+        val identificationDate: LocalDate?
 
         ) {
 

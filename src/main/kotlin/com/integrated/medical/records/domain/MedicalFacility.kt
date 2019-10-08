@@ -16,7 +16,7 @@ data class MedicalFacility(
         val name: String,
 
         @Column(name = "EXTRA_INFORMATION", length = 1050)
-        val extraInformation: String
+        val extraInformation: String?
 ) {
 
     @ManyToOne

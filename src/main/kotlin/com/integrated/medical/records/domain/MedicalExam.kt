@@ -18,7 +18,7 @@ data class MedicalExam(
         val examName: String,
 
         @Column(name = "EXAM_OBSERVATION", length = 750)
-        val examObservation: String,
+        val examObservation: String?,
 
         @Column(name = "PRESCRIPTION_DATE")
         @NotNull

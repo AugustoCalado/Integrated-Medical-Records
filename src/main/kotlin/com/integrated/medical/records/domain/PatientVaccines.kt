@@ -30,7 +30,7 @@ data class PatientVaccines(
         val dataVaccine: LocalDate,
 
         @Column(name = "PLACE_VACCINE_APPLIED")
-        val placeVaccineApplied: String
+        val placeVaccineApplied: String? = null
 
 
 ) : Serializable {

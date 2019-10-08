@@ -27,25 +27,25 @@ data class MedicalRecord(
         val directedAnamnesis: String,
 
         @Column(name = "ECTOSCOPY", length = 750)
-        val ectoscopy: String,
+        val ectoscopy: String?,
 
         @Column(name = "PE_HEAD_NECK", length = 750)
-        val peHeadNeck: String,
+        val peHeadNeck: String?,
 
         @Column(name = "PE_BREATHING_APPARATUS", length = 750)
-        val peBreathingApparatus: String,
+        val peBreathingApparatus: String?,
 
         @Column(name = "PE_HEART_SYSTEM", length = 750)
-        val peHeartSystem: String,
+        val peHeartSystem: String?,
 
         @Column(name = "PE_BODY_MEMBERS", length = 750)
-        val peBodyMembers: String,
+        val peBodyMembers: String?,
 
         @Column(name = "PE_BONES_JOINTS", length = 750)
-        val peBonesJoints: String,
+        val peBonesJoints: String?,
 
         @Column(name = "PE_NEUROLOGICAL", length = 750)
-        val peNeurological: String,
+        val peNeurological: String?,
 
         @Column(name = "DIAGNOSTIC", length = 2050)
         @NotNull
@@ -71,4 +71,6 @@ data class MedicalRecord(
 
     @OneToMany(mappedBy = "medicalRecord")
     lateinit var medicalFacility: List<MedicalFacility>
+
+    // TODO maybe we have some problems with dis lateinit variable, since some of them are optional to be filled by the doctor
 }

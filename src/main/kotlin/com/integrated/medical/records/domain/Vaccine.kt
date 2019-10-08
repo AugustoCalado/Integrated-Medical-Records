@@ -17,10 +17,10 @@ data class Vaccine(
         val name: String,
 
         @Column(name = "DESCRIPTION", length = 1000)
-        val description: String,
+        val description: String?,
 
         @Column(name = "N_DOSES", length = 2)
-        val numberDoses: Int
+        val numberDoses: Int?
 ) {
     //@OneToMany(mappedBy = "vaccine")
     //lateinit var patientVaccines: List<PatientVaccines>

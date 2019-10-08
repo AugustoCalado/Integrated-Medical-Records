@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class PatientServiceImpl(val patientRepo: PatientRepository) : PatientService {
+class PatientServiceImpl(val patientRepo: PatientRepository, val modelMapper: ModelMapper) : PatientService {
+    override fun findPatientByCpf(cpf: String): PatientDTO? {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
-    @Autowired
-    lateinit var modelMapper: ModelMapper
+    override fun updatePatient(patient: PatientDTO, cpf: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun getAllPatients(): List<PatientDTO>? {
         var listOfPatients = patientRepo.findAll()

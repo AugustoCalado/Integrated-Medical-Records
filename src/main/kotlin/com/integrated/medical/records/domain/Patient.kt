@@ -32,16 +32,17 @@ data class Patient(
         val birthDate: LocalDate,
 
         @Column(name = "BIRTHPLACE", length = 300)
-        val birthPlace: String,
+        val birthPlace: String?,
 
         @Column(name = "FATHER_NAME", length = 150)
-        val fatherName: String,
+        val fatherName: String?,
 
         @Column(name = "MOTHER_NAME", length = 150)
-        val motherName: String
+        val motherName: String?
 ) {
 
-    @OneToOne(mappedBy = "patient")
+    @OneToOne
+    @JoinColumn(name = "ID_USER")
     lateinit var user: User
 
     @OneToMany(mappedBy = "patient")

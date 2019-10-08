@@ -24,9 +24,9 @@ data class User(
         val password: String,
 
         @Column(name = "CELL_PHONE", length = 14)
-        val cellPhone:String
+        val cellPhone: String?
 ) {
-        @OneToOne
-        @JoinColumn(name = "ID_PATIENT")
-        lateinit var patient: Patient
+
+    @OneToOne(mappedBy = "user")
+    lateinit var patient: Patient
 }

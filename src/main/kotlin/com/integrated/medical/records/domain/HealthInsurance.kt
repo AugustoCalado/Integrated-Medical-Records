@@ -28,6 +28,7 @@ class HealthInsurance (
         val insuranceCardNumber: String,
 
         @Column(name = "CARD_EXPIRATION_DATE")
+        @NotNull
         val cardExpirationDate: Int
         //042021 == 04/2021
 

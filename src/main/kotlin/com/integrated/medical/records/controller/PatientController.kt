@@ -1,6 +1,7 @@
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.PatientDTO
+import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.exception.PatientNotFoundException
 import com.integrated.medical.records.exception.PatientUpdateException
 import com.integrated.medical.records.service.PatientService
@@ -25,7 +26,7 @@ class PatientController(
         return try {
             val patient = patientService.findPatientByCpf(cpf)
             ResponseEntity(patient, HttpStatus.OK)
-        } catch (ex: PatientNotFoundException) {
+        } catch (ex: ObjectNotFoundException) {
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
     }

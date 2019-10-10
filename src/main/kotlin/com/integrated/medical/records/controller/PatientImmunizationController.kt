@@ -2,7 +2,7 @@ package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.PatientVaccinesDTO
 import com.integrated.medical.records.domain.dto.VaccinesDTO
-import com.integrated.medical.records.exception.PatientImmunizationNotFoundException
+import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.service.PatientImmunizationService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -61,7 +61,7 @@ class PatientImmunizationController(
         return try {
             patientImmunizationService.deletePattientImmunization()
             ResponseEntity(HttpStatus.OK)
-        } catch (ex: PatientImmunizationNotFoundException) {
+        } catch (ex: ObjectNotFoundException) {
             ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
         }
     }

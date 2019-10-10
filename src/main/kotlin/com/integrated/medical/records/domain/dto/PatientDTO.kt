@@ -1,8 +1,5 @@
 package com.integrated.medical.records.domain.dto
 
-import com.integrated.medical.records.domain.HealthInsurance
-import com.integrated.medical.records.domain.PatientVaccines
-import com.integrated.medical.records.domain.User
 import com.integrated.medical.records.enums.GenderTypes
 import java.io.Serializable
 import java.time.LocalDate
@@ -25,11 +22,11 @@ class PatientDTO(
 
         var motherName: String,
 
-        var user: User,
+        var user: UserDTO,
 
-        var patientVaccines: List<PatientVaccines>,
+        var patientVaccines: List<PatientVaccinesDTO>,
 
-        var healthInsurance: List<HealthInsurance>
+        var healthInsurance: List<HealthInsuranceDTO>
 ) : Serializable {
 
 }

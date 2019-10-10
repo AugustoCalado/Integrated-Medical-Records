@@ -1,6 +1,5 @@
 package com.integrated.medical.records.domain.dto
 
-import com.integrated.medical.records.domain.Patient
 import java.io.Serializable
 
 class UserDTO(
@@ -14,7 +13,7 @@ class UserDTO(
 
         var cellPhone: String,
 
-        var patient: Patient
+        var patient: PatientDTO
 
 ) : Serializable {
 }

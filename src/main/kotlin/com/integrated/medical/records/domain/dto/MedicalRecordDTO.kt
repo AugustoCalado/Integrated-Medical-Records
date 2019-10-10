@@ -32,7 +32,7 @@ class MedicalRecordDTO(
         val medicalRecordDate: LocalDate,
 
         //##
-        val patient: Patient,
+        val patient: PatientDTO,
 
         val doctorCredential: DoctorCredentialDTO,
 

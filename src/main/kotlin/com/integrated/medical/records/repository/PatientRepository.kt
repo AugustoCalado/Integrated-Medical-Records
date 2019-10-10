@@ -7,7 +7,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 @RepositoryRestResource
 interface PatientRepository : CrudRepository<Patient, Int> {
     //    @RestResource(path = "names", rel = "name")
-    fun findByCpf(cpf: String): Patient
-
+    fun findByCpf(cpf: String): Patient?
     fun findAllByBirthDateNotNull(): List<Patient>
 }

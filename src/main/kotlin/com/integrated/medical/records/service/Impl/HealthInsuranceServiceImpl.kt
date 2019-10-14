@@ -8,7 +8,9 @@ import com.integrated.medical.records.repository.PatientRepository
 import com.integrated.medical.records.service.HealthInsuranceService
 import org.modelmapper.ModelMapper
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Service
 
+@Service
 class HealthInsuranceServiceImpl(
         val patientRepository: PatientRepository,
         val healthInsuranceRepository: HealthInsuranceRepository,

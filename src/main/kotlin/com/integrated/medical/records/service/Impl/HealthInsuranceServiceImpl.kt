@@ -23,6 +23,7 @@ class HealthInsuranceServiceImpl(
 
         //TODO Maybe we are going to have problems with the convertion of the DTO -> DAO objects inside the class
         val healthInsurance = modelMapper.map(healthInsuranceDTO, HealthInsurance::class.java)
+
         healthInsurance.patient = patient
 
         healthInsuranceRepository.save(healthInsurance)
@@ -32,15 +33,19 @@ class HealthInsuranceServiceImpl(
     @Throws(ObjectNotFoundException::class, IllegalArgumentException::class)
     override fun updateHealthInsurance(idHealthInsurance: Int, healthInsuranceDTO: HealthInsuranceDTO) {
 
-        val healthInsurance = healthInsuranceRepository.findByIdOrNull(idHealthInsurance)
+        healthInsuranceRepository.findByIdOrNull(idHealthInsurance)
                 ?: throw ObjectNotFoundException("Health Insurance Id: ${idHealthInsurance} was not found \n Updated was not performed")
-        val updatedHealthInsurance = modelMapper.map(healthInsuranceDTO, HealthInsurance::class.java)
 
-        healthInsuranceRepository.save(generateUpdatedHealthInsurance(healthInsuranceDTO, healthInsurance))
+        //TODO Maybe we are going to have problems with the convertion of the DTO -> DAO objects inside the class
+        val updatedHealthInsurance = modelMapper.map(healthInsuranceDTO, HealthInsurance::class.java)
+        healthInsuranceRepository.save(updatedHealthInsurance)
+
+        //healthInsuranceRepository.save(generateUpdatedHealthInsurance(healthInsuranceDTO, healthInsurance))
     }
 
+    @Throws(Exception::class)
     override fun deleteHealthInsurance(idHealthInsurance: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        healthInsuranceRepository.deleteById(idHealthInsurance)
     }
 
     private fun generateUpdatedHealthInsurance(

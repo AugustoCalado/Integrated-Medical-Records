@@ -18,8 +18,10 @@ data class LifeHistoric(
 
         ) {
 
+/*
     @ManyToOne
     @JoinColumn(name = "ID_PATIENT")
     lateinit var patient: Patient
+*/
 
 }

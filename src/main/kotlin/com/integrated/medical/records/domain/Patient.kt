@@ -38,19 +38,26 @@ data class Patient(
         val fatherName: String?,
 
         @Column(name = "MOTHER_NAME", length = 150)
-        val motherName: String?
+        val motherName: String?,
+
+        @OneToMany(mappedBy = "patient")
+        val patientVaccines: List<PatientVaccines>? = null,
+
+        @OneToMany(mappedBy = "patient")
+        val medicalRecord: List<MedicalRecord>? = null,
+
+        @OneToMany(mappedBy = "patient")
+        val healthInsurance: List<HealthInsurance>? = null,
+
+        @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+        @JoinColumn(name = "ID_PATIENT")
+        val lifeHistoric: List<LifeHistoric>? = null
+
 ) {
 
     @OneToOne
     @JoinColumn(name = "ID_USER")
     lateinit var user: User
 
-    @OneToMany(mappedBy = "patient")
-    lateinit var patientVaccines: List<PatientVaccines>
 
-    @OneToMany(mappedBy = "patient")
-    lateinit var medicalRecord: List<MedicalRecord>
-
-    @OneToMany(mappedBy = "patient")
-    lateinit var healthInsurance: List<HealthInsurance>
 }

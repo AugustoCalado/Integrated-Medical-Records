@@ -1,19 +1,16 @@
 package com.integrated.medical.records.domain.dto
 
-import com.integrated.medical.records.domain.*
 import java.time.LocalDate
 
 class MedicalRecordDTO(
 
         val idMedicalRecord: Int,
 
+        val crm: String,
+
         val mainComplain: String,
 
         val currentDiseaseInfo: String,
-
-        val directedAnamnesis: String,
-
-        val ectoscopy: String,
 
         val peHeadNeck: String,
 
@@ -31,20 +28,12 @@ class MedicalRecordDTO(
 
         val medicalRecordDate: LocalDate,
 
-        //##
-        val patient: PatientDTO,
-
-        val doctorCredential: DoctorCredentialDTO,
-
-        val vitalSigns: VitalSignsDTO,
-
-        val medicalExam: List<MedicalExamDTO>? = null,
-
-        val medicalPrescription: List<MedicalPrescriptionDTO>? = null,
-
-        val medicalFacility: List<MedicalFacilityDTO>? = null
-
+        val medicalRecordPlace: String
 
 ) {
+
+    val medicalExam: MutableList<MedicalExamDTO>? = mutableListOf()
+
+    val medicalPrescription: MutableList<MedicalPrescriptionDTO>? = mutableListOf()
 
 }

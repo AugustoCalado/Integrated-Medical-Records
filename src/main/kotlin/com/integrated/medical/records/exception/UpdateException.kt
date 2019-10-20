@@ -3,7 +3,7 @@ package com.integrated.medical.records.exception
 import java.lang.Exception
 import java.lang.RuntimeException
 
-class PatientUpdateException : RuntimeException {
+class UpdateException : RuntimeException {
     var args: Array<out String>? = null
 
 

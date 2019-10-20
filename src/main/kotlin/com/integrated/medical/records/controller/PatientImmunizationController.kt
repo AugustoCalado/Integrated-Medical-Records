@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*
 
 @Api(value = "Immunization Patient Management System")
 @RepositoryRestController
+@RequestMapping(value = "/patient-immunization")
 class PatientImmunizationController(
         val patientImmunizationService: PatientImmunizationService
 ) {

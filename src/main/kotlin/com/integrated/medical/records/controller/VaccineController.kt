@@ -2,6 +2,7 @@ package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.VaccinesDTO
 import com.integrated.medical.records.repository.VaccineRepository
+import io.swagger.annotations.Api
 import org.modelmapper.ModelMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.rest.webmvc.RepositoryRestController
@@ -9,16 +10,13 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-//@RestController
+@Api(value = "Vaccines Controller API")
 @RepositoryRestController
-@RequestMapping(path = ["/vaccine"])
-class VaccineController {
-
-    @Autowired
-    lateinit var vaccineRepository: VaccineRepository
-
-    @Autowired
-    lateinit var modelMapper: ModelMapper
+@RequestMapping(value = "/vaccine")
+class VaccineController(
+        val vaccineRepository: VaccineRepository,
+        val modelMapper: ModelMapper
+) {
 
     @GetMapping("/get/all")
     fun getAllVaccines(): ResponseEntity<List<VaccinesDTO>> {

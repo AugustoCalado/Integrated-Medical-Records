@@ -11,7 +11,7 @@ import javax.validation.Valid
 
 
 @RepositoryRestController
-@RequestMapping(value="/health-insurance")
+@RequestMapping(value = "/health-insurance")
 class HealthInsuranceController(val healthInsuranceService: HealthInsuranceService) {
 
     @PostMapping(path = ["add-new-insurance"])

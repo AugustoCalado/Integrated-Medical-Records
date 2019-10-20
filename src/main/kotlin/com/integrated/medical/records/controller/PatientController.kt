@@ -2,7 +2,6 @@ package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.PatientDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
-import com.integrated.medical.records.exception.PatientNotFoundException
 import com.integrated.medical.records.exception.PatientUpdateException
 import com.integrated.medical.records.service.PatientService
 import io.swagger.annotations.Api
@@ -10,13 +9,11 @@ import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.*
 
 @Api(value = "Patient Management System")
 @RepositoryRestController
+@RequestMapping(value = "/patient")
 class PatientController(
         val patientService: PatientService
 ) {

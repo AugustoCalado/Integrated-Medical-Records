@@ -1,8 +1,10 @@
 package com.integrated.medical.records.domain
 
+import com.integrated.medical.records.domain.dto.MedicalRecordDTO
 import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotNull
+import kotlin.streams.toList
 
 
 @Entity
@@ -48,6 +50,10 @@ data class MedicalRecord(
         @NotNull
         val diagnostic: String,
 
+        @Column(name = "PRESCRIPTION", length = 2050)
+        @NotNull
+        val prescription: String,
+
         @Column(name = "MEDICAL_RECORD_DATE")
         @NotNull
         val medicalRecordDate: LocalDate,
@@ -56,14 +62,46 @@ data class MedicalRecord(
         @NotNull
         val medicalRecordPlace: String
 
+
 ) {
 
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "FK_MEDICAL_RECORD")
     var medicalExam: MutableList<MedicalExam>? = mutableListOf()
 
-    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
-    @JoinColumn(name = "FK_MEDICAL_RECORD")
-    var medicalPrescription: MutableList<MedicalPrescription>? = mutableListOf()
+    companion object {
+        fun entityListToDtoList(dtoList: MutableList<MedicalRecord>): MutableList<MedicalRecordDTO> {
+            return dtoList.stream()
+                    .map { it.toDTO() }
+                    .toList()
+                    .toMutableList()
+        }
+    }
 
+}
+
+fun MedicalRecord.toDTO(): MedicalRecordDTO {
+    var medicalRecordDTO = MedicalRecordDTO(
+            this.idMedicalRecord,
+            this.crm,
+            this.mainComplain,
+            this.currentDiseaseInfo,
+            this.peHeadNeck.orEmpty(),
+            this.peBreathingApparatus.orEmpty(),
+            this.peHeartSystem.orEmpty(),
+            this.peBodyMembers.orEmpty(),
+            this.peBonesJoints.orEmpty(),
+            this.peNeurological.orEmpty(),
+            this.diagnostic,
+            this.prescription,
+            this.medicalRecordDate,
+            this.medicalRecordPlace
+    )
+
+    this.medicalExam?.let {
+        medicalRecordDTO.medicalExam = MedicalExam.entityListToDtoList(it)
+
+    }
+
+    return medicalRecordDTO
 }

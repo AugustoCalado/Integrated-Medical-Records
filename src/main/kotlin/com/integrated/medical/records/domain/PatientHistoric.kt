@@ -14,8 +14,9 @@ data class PatientHistoric(
         @Column(name = "ID_PATHOLOGY_HISTORIC", nullable = false, unique = true)
         val idPathologyHistoric: Int,
 
+        @NotBlank
         @Column(name = "DESCRIPTION", length = 500)
-        val description: String?,
+        val description: String,
 
         @Column(name = "EXTRA_OBSERVATION", length = 500)
         val extraObservation: String?,

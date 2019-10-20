@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.integrated.medical.records.domain.dto.UserDTO
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
@@ -29,4 +30,18 @@ data class User(
 
     @OneToOne(mappedBy = "user")
     lateinit var patient: Patient
+}
+
+fun User.toDTO(): UserDTO {
+
+    var userDTO = UserDTO(
+            this.idUser,
+            this.nameLogin,
+            this.email,
+            this.password,
+            this.cellPhone,
+            this.patient.toDTO()
+    )
+
+    return userDTO
 }

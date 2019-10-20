@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.integrated.medical.records.domain.dto.PatientDTO
 import com.integrated.medical.records.enums.GenderTypes
 import java.time.LocalDate
 import javax.persistence.*
@@ -31,33 +32,45 @@ data class Patient(
         @Column(name = "BIRTHDATE", insertable = false, updatable = false)
         val birthDate: LocalDate,
 
-        @Column(name = "BIRTHPLACE", length = 300)
-        val birthPlace: String?,
-
-        @Column(name = "FATHER_NAME", length = 150)
-        val fatherName: String?,
-
-        @Column(name = "MOTHER_NAME", length = 150)
-        val motherName: String?,
-
-        @OneToMany(mappedBy = "patient")
-        val patientVaccines: List<PatientVaccines>? = null,
-
-        @OneToMany(mappedBy = "patient")
-        val medicalRecord: List<MedicalRecord>? = null,
-
-        @OneToMany(mappedBy = "patient")
-        val healthInsurance: List<HealthInsurance>? = null,
-
-        @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
-        @JoinColumn(name = "ID_PATIENT")
-        val lifeHistoric: List<LifeHistoric>? = null
-
+        @OneToOne
+        @JoinColumn(name = "ID_USER")
+        val user: User
 ) {
 
-    @OneToOne
-    @JoinColumn(name = "ID_USER")
-    lateinit var user: User
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_PATIENT")
+    var patientVaccines: MutableList<PatientVaccines>? = mutableListOf()
 
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_PATIENT")
+    var medicalRecord: MutableList<MedicalRecord>? = mutableListOf()
 
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_PATIENT")
+    var patientHistoric: MutableList<PatientHistoric>? = mutableListOf()
+
+}
+
+fun Patient.toDTO(): PatientDTO {
+    var patientDTO = PatientDTO(
+            this.idPatient,
+            this.name,
+            this.cpf,
+            this.gender,
+            this.birthDate,
+            this.user.toDTO()
+    )
+    this.patientVaccines?.let {
+        patientDTO.patientVaccines = PatientVaccines.entityListToDtoList(it)
+    }
+
+    this.medicalRecord?.let {
+        patientDTO.medicalRecord = MedicalRecord.entityListToDtoList(it)
+    }
+
+    this.patientHistoric?.let {
+        patientDTO.patientHistoric = PatientHistoric.entityListToDtoList(it)
+    }
+
+    return patientDTO
 }

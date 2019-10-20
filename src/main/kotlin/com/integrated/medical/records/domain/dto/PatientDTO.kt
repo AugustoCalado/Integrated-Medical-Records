@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain.dto
 
+import com.integrated.medical.records.domain.Patient
 import com.integrated.medical.records.enums.GenderTypes
 import java.io.Serializable
 import java.time.LocalDate
@@ -16,17 +17,35 @@ class PatientDTO(
 
         var birthDate: LocalDate,
 
-        var birthPlace: String,
+        var user: UserDTO
 
-        var fatherName: String,
-
-        var motherName: String,
-
-        var user: UserDTO,
-
-        var patientVaccines: List<PatientVaccinesDTO>,
-
-        var healthInsurance: List<HealthInsuranceDTO>
 ) : Serializable {
+    var patientVaccines: MutableList<PatientVaccinesDTO>? = mutableListOf()
+    var medicalRecord: MutableList<MedicalRecordDTO>? = mutableListOf()
+    var patientHistoric: MutableList<PatientHistoricDTO>? = mutableListOf()
+}
 
+fun PatientDTO.toEntity(): Patient {
+    var patient = Patient(
+            this.idPatient,
+            this.name,
+            this.cpf,
+            this.gender,
+            this.birthDate,
+            this.user.toEntity()
+    )
+
+    this.patientVaccines?.let {
+        patient.patientVaccines = PatientVaccinesDTO.dtoListToEntityList(it)
+    }
+
+    this.medicalRecord?.let {
+        patient.medicalRecord = MedicalRecordDTO.dtoListToEntityList(it)
+    }
+
+    this.patientHistoric?.let {
+        patient.patientHistoric = PatientHistoricDTO.dtoListToEntityList(it)
+    }
+
+    return patient
 }

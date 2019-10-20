@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.integrated.medical.records.domain.dto.MedicalExamResultDTO
 import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -22,4 +23,14 @@ data class MedicalExamResult(
     @OneToOne
     @MapsId
     lateinit var medicalExam: MedicalExam
+}
+
+fun MedicalExamResult.toDTO(): MedicalExamResultDTO {
+    var patientHistoricDTO = MedicalExamResultDTO(
+            this.idMedicalExamResult,
+            this.resultObservation,
+            this.resultGenerationData,
+            this.medicalExam.toDTO()
+    )
+    return patientHistoricDTO
 }

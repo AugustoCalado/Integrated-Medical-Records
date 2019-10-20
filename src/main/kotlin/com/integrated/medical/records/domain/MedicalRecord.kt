@@ -14,6 +14,10 @@ data class MedicalRecord(
         @Column(name = "ID_MEDICAL_RECORD", nullable = false, unique = true)
         val idMedicalRecord: Int,
 
+        @Column(name = "DOCTOR_CRM", length = 20)
+        @NotNull
+        val crm: String,
+
         @Column(name = "MAIN_COMPLAIN", length = 750)
         @NotNull
         val mainComplain: String,
@@ -21,13 +25,6 @@ data class MedicalRecord(
         @Column(name = "CURRENT_DISEASE_INFORMATION", length = 750)
         @NotNull
         val currentDiseaseInfo: String,
-
-        @Column(name = "DIRECTED_ANAMNESIS", length = 1050)
-        @NotNull
-        val directedAnamnesis: String,
-
-        @Column(name = "ECTOSCOPY", length = 750)
-        val ectoscopy: String?,
 
         @Column(name = "PE_HEAD_NECK", length = 750)
         val peHeadNeck: String?,
@@ -53,24 +50,20 @@ data class MedicalRecord(
 
         @Column(name = "MEDICAL_RECORD_DATE")
         @NotNull
-        val medicalRecordDate: LocalDate
+        val medicalRecordDate: LocalDate,
+
+        @Column(name = "MEDICAL_RECORD_PLACE")
+        @NotNull
+        val medicalRecordPlace: String
 
 ) {
 
-    // TODO self-relationship
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_MEDICAL_RECORD")
+    var medicalExam: MutableList<MedicalExam>? = mutableListOf()
 
-    @ManyToOne
-    @JoinColumn(name = "ID_PATIENT")
-    lateinit var patient: Patient
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_MEDICAL_RECORD")
+    var medicalPrescription: MutableList<MedicalPrescription>? = mutableListOf()
 
-    @OneToMany(mappedBy = "medicalRecord")
-    lateinit var medicalExam: List<MedicalExam>
-
-    @OneToMany(mappedBy = "medicalRecord")
-    lateinit var medicalPrescription: List<MedicalPrescription>
-
-    @OneToMany(mappedBy = "medicalRecord")
-    lateinit var medicalFacility: List<MedicalFacility>
-
-    // TODO maybe we have some problems with dis lateinit variable, since some of them are optional to be filled by the doctor
 }

@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull
 data class MedicalExamResult(
 
         @Id
-        //@Column(name = "ID_MEDICAL_EXAM_RESULT", nullable = false, unique = true)
         val idMedicalExamResult: Int,
 
         @Column(name = "EXAM_OBSERVATION", length = 500)
@@ -19,7 +18,6 @@ data class MedicalExamResult(
         @NotNull
         val resultGenerationData: LocalDate
 
-        //TODO create new field with information about where and who perform the exam
 ) {
     @OneToOne
     @MapsId

@@ -24,10 +24,4 @@ data class MedicalExam(
         @NotNull
         val prescriptionDate: LocalDate
 
-
-) {
-    @ManyToOne
-    @JoinColumn(name = "ID_MEDICAL_RECORD")
-    lateinit var medicalRecord: MedicalRecord
-
-}
+)

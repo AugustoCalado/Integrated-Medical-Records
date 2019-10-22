@@ -49,6 +49,10 @@ data class Patient(
     @JoinColumn(name = "FK_PATIENT")
     var patientHistoric: MutableList<PatientHistoric>? = mutableListOf()
 
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_PATIENT")
+    var emergencyCard: MutableList<EmergencyCard>? = mutableListOf()
+
 }
 
 fun Patient.toDTO(): PatientDTO {
@@ -70,6 +74,10 @@ fun Patient.toDTO(): PatientDTO {
 
     this.patientHistoric?.let {
         patientDTO.patientHistoric = PatientHistoric.entityListToDtoList(it)
+    }
+
+    this.emergencyCard?.let {
+        patientDTO.emergencyCard = EmergencyCard.entityListToDtoList(it)
     }
 
     return patientDTO

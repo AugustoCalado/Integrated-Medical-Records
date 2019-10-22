@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain.dto
 
+import com.integrated.medical.records.domain.EmergencyCard
 import com.integrated.medical.records.domain.Patient
 import com.integrated.medical.records.enums.GenderTypes
 import java.io.Serializable
@@ -23,6 +24,7 @@ class PatientDTO(
     var patientVaccines: MutableList<PatientVaccinesDTO>? = mutableListOf()
     var medicalRecord: MutableList<MedicalRecordDTO>? = mutableListOf()
     var patientHistoric: MutableList<PatientHistoricDTO>? = mutableListOf()
+    var emergencyCard: MutableList<EmergencyCardDTO>? = mutableListOf()
 }
 
 fun PatientDTO.toEntity(): Patient {
@@ -45,6 +47,10 @@ fun PatientDTO.toEntity(): Patient {
 
     this.patientHistoric?.let {
         patient.patientHistoric = PatientHistoricDTO.dtoListToEntityList(it)
+    }
+
+    this.emergencyCard?.let {
+        patient.emergencyCard = EmergencyCardDTO.dtoListToEntityList(it)
     }
 
     return patient

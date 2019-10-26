@@ -13,7 +13,7 @@ data class EmergencyCard(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Column(name = "ID_EMERGENCY_CARD", nullable = false, unique = true)
-        val idEmergencyCardDTO: Long,
+        val idEmergencyCardDTO: Int,
 
         @NotBlank
         @Column(name = "DECLARATION", length = 500)

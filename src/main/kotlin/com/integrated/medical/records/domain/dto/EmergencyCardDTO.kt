@@ -6,7 +6,7 @@ import kotlin.streams.toList
 
 class EmergencyCardDTO(
 
-        val idEmergencyCardDTO: Long,
+        val idEmergencyCardDTO: Int,
 
         val declaration: String,
 

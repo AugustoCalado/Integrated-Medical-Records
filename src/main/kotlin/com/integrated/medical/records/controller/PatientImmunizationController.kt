@@ -1,7 +1,6 @@
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.PatientVaccinesDTO
-import com.integrated.medical.records.domain.dto.VaccinesDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.service.PatientImmunizationService
 import io.swagger.annotations.Api
@@ -37,30 +36,38 @@ class PatientImmunizationController(
     fun getPattientImmunization(
             @RequestParam(name = "idPatient", required = true) idPatient: Int,
             @RequestParam(name = "idPatientVaccine", required = true) idPatientVaccines: Int
-    ): ResponseEntity<PatientVaccinesDTO> {
-        patientImmunizationService.findPatientImmunization(idPatient, idPatientVaccines)
-        return ResponseEntity(HttpStatus.OK)
+    ): ResponseEntity<*> {
+        return try {
+            val response = patientImmunizationService.findPatientImmunization(idPatient, idPatientVaccines)
+            ResponseEntity(response, HttpStatus.OK)
+        } catch (ex: ObjectNotFoundException) {
+            ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
+        }
     }
 
     @ApiOperation(value = "Register the patient immunization")
     @PostMapping("/patient-immunization/add-immunization/{cpf}")
     fun addPatientImmunization(
             @RequestParam(name = "cpf", required = true) cpf: String,
-            @RequestBody(required = true) vaccinesDTO: VaccinesDTO
+            @RequestBody(required = true) vaccinesDTO: PatientVaccinesDTO
     ): ResponseEntity<String> {
-        patientImmunizationService.insertPatientImmunization()
-        return ResponseEntity(HttpStatus.OK)
+        return try {
+            patientImmunizationService.insertPatientImmunization(cpf, vaccinesDTO)
+            ResponseEntity(HttpStatus.OK)
+        } catch (ex: ObjectNotFoundException) {
+            ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
+        }
     }
 
     @ApiOperation(value = "Delete patient vaccine")
     @DeleteMapping("/patient-immunization/delete}")
     fun deletePatientVaccine(
-            @RequestParam(name = "idPatient", required = true) idPatient: Int,
+            @RequestParam(name = "cpfPatient", required = true) cpfPatient: String,
             @RequestParam(name = "idPatientVaccine", required = true) idPatientVaccines: Int
 
     ): ResponseEntity<String> {
         return try {
-            patientImmunizationService.deletePattientImmunization()
+            patientImmunizationService.deletePattientImmunization(cpfPatient, idPatientVaccines)
             ResponseEntity(HttpStatus.OK)
         } catch (ex: ObjectNotFoundException) {
             ResponseEntity(ex.message, HttpStatus.NOT_FOUND)

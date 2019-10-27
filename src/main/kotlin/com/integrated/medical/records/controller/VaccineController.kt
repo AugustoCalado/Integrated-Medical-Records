@@ -1,10 +1,9 @@
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.VaccinesDTO
-import com.integrated.medical.records.repository.VaccineRepository
+import com.integrated.medical.records.exception.ObjectNotFoundException
+import com.integrated.medical.records.service.VaccineService
 import io.swagger.annotations.Api
-import org.modelmapper.ModelMapper
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,40 +12,38 @@ import org.springframework.web.bind.annotation.*
 @Api(value = "Vaccines Controller API")
 @RepositoryRestController
 @RequestMapping(value = "/vaccine")
-class VaccineController(
-        val vaccineRepository: VaccineRepository,
-        val modelMapper: ModelMapper
-) {
+class VaccineController(val vaccineService: VaccineService) {
 
     @GetMapping("/get/all")
     fun getAllVaccines(): ResponseEntity<List<VaccinesDTO>> {
-        var vaccineList = vaccineRepository.findAll().toList()
-        var returnVaccines = mutableListOf<VaccinesDTO>()
-        vaccineList.forEach { x ->
-            var y: VaccinesDTO = modelMapper.map(x, VaccinesDTO::class.java)
-            returnVaccines.add(y)
-        }
-        return ResponseEntity(returnVaccines, HttpStatus.OK)
+
+        val response = vaccineService.getAllVaccines() ?: emptyList()
+        return ResponseEntity(response, HttpStatus.OK)
     }
 
     @GetMapping("get/{idVaccine}")
-    fun getVaccine(@PathVariable(required = true) idVaccine: Int): ResponseEntity<VaccinesDTO> {
-        return ResponseEntity(HttpStatus.OK)
+    fun getVaccine(@PathVariable(required = true) idVaccine: Int): ResponseEntity<*> {
+        return try {
+            return ResponseEntity(vaccineService.getVaccine(idVaccine), HttpStatus.OK)
+        } catch (ex: ObjectNotFoundException) {
+            return ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
+        }
     }
 
     @PostMapping
     fun registerVaccine(@RequestBody(required = true) vaccine: VaccinesDTO): ResponseEntity<String> {
+        vaccineService.addVaccine(vaccine)
         return ResponseEntity(HttpStatus.OK)
     }
 
     @DeleteMapping
     fun deleteVaccine(@RequestBody(required = true) vaccine: VaccinesDTO): ResponseEntity<String> {
-        return ResponseEntity(HttpStatus.OK)
-    }
-
-    @DeleteMapping(params = ["idVaccine"])
-    fun deleteVaccine(@RequestParam(name = "idVaccine", required = true) idVaccine: Int): ResponseEntity<String> {
-        return ResponseEntity(HttpStatus.OK)
+        return try {
+            vaccineService.deleteVaccine(vaccine)
+            ResponseEntity(HttpStatus.OK)
+        } catch (ex: ObjectNotFoundException) {
+            ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
+        }
     }
 
 }

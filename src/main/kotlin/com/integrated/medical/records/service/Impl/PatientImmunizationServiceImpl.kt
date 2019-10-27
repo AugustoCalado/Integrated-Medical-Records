@@ -17,6 +17,7 @@ class PatientImmunizationServiceImpl(
         val patientVaccinesRepository: PatientVaccinesRepository
 ) : PatientImmunizationService {
 
+    @Throws(ObjectNotFoundException::class)
     override fun findAllPatientImmunization(cpf: String): List<PatientVaccinesDTO> {
 
         val patient = patientRepository.findByCpf(cpf)
@@ -27,6 +28,7 @@ class PatientImmunizationServiceImpl(
         return emptyList()
     }
 
+    @Throws(ObjectNotFoundException::class)
     override fun insertPatientImmunization(cpf: String, patientVaccinesDTO: PatientVaccinesDTO): PatientDTO {
 
         val patient = patientRepository.findByCpf(cpf)
@@ -37,6 +39,7 @@ class PatientImmunizationServiceImpl(
         return patientRepository.save(patient).toDTO()
     }
 
+    @Throws(ObjectNotFoundException::class)
     override fun findPatientImmunization(idPatient: Int, idPatientVaccines: Int): PatientVaccinesDTO {
 
         val patientVaccines = patientVaccinesRepository.findById(idPatientVaccines).orElseThrow {

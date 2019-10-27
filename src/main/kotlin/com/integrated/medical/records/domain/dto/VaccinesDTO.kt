@@ -19,6 +19,10 @@ data class VaccinesDTO(
         //https://www.baeldung.com/kotlin-data-objects
 }
 
+fun List<VaccinesDTO>.toDTO(): List<Vaccine>{
+    return map { it.toEntity() }
+}
+
 fun VaccinesDTO.toEntity(): Vaccine {
     var vaccine = Vaccine(
             this.idVaccine,

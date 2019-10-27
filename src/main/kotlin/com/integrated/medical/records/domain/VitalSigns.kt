@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.LocalDate
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -28,28 +29,24 @@ data class VitalSigns(
         //respirações por minuto (rpm)
 
         @Column(name = "BLOOD_TEMPERATURE")
-        @NotNull
-        val bloodTemperature: Double,
+        val bloodTemperature: Double?,
 
         @Column(name = "BODY_MASS_INDEX")
         val bodyMassIndex: Double?,
 
         @Column(name = "WEIGHT")
-        @NotNull
-        val weight: Double,
+        val weight: Double?,
 
         @Column(name = "HEIGHT")
-        @NotNull
-        val height: Double,
+        val height: Double?,
 
         @Column(name = "MEASUREMENT_DATE")
         @NotNull
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val measurementDate: LocalDate
 
 
 ) {
-    // TODO self-relationship
-
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "ID_MEDICAL_RECORD")

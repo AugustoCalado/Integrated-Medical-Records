@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.dto.PatientVaccinesDTO
 import java.io.Serializable
 import java.time.LocalDate
@@ -24,6 +25,7 @@ data class PatientVaccines(
 
         @Column(name = "DATA_IMMUNIZATION")
         @NotBlank
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val dataVaccine: LocalDate,
 
         @Column(name = "PLACE_VACCINE_APPLIED")

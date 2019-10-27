@@ -1,9 +1,12 @@
 package com.integrated.medical.records.domain.dto
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.Patient
 import com.integrated.medical.records.enums.GenderTypes
+import org.springframework.format.annotation.DateTimeFormat
 import java.io.Serializable
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class PatientDTO(
 
@@ -15,6 +18,8 @@ class PatientDTO(
 
         var gender: GenderTypes,
 
+//        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @JsonFormat(pattern = "yyyy::MM::dd")
         var birthDate: LocalDate,
 
         var user: UserDTO

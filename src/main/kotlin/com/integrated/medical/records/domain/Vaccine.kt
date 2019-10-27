@@ -21,7 +21,7 @@ data class Vaccine(
         @Column(name = "DESCRIPTION", length = 1000)
         val description: String?,
 
-        @Column(name = "N_DOSES", length = 2)
+        @Column(name = "N_DOSES", length = 2, nullable = true)
         val numberDoses: Int?
 )
 

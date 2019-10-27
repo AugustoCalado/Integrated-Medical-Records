@@ -11,7 +11,7 @@ data class VaccinesDTO(
 
         var description: String = "",
 
-        var numberDoses: Int = 0
+        var numberDoses: Int?
 ) : Serializable {
     // TODO mapping in kotlin
         //https://tp21.se/blog/2017/12/07/dto-mapping-in-kotlin/

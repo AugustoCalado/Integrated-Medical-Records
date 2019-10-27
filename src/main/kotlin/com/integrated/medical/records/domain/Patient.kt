@@ -1,8 +1,11 @@
 package com.integrated.medical.records.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.dto.PatientDTO
 import com.integrated.medical.records.enums.GenderTypes
+import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
@@ -29,7 +32,9 @@ data class Patient(
         val gender: GenderTypes,
 
         @NotNull
-        @Column(name = "BIRTHDATE", insertable = false, updatable = false)
+        @Column(name = "BIRTHDATE")
+//        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val birthDate: LocalDate,
 
         @OneToOne

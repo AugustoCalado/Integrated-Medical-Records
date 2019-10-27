@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain.dto
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.MedicalRecord
 import java.time.LocalDate
 import kotlin.streams.toList
@@ -30,6 +31,7 @@ class MedicalRecordDTO(
 
         val prescription: String,
 
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val medicalRecordDate: LocalDate,
 
         val medicalRecordPlace: String

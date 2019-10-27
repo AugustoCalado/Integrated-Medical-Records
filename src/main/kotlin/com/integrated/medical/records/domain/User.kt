@@ -27,9 +27,10 @@ data class User(
         @Column(name = "CELL_PHONE", length = 14)
         val cellPhone: String?
 ) {
-
-    @OneToOne(mappedBy = "user")
-    lateinit var patient: Patient
+/*
+    @OneToOne
+    @JoinColumn(name = "ID_PATIENT")
+    lateinit var patient: Patient*/
 }
 
 fun User.toDTO(): UserDTO {
@@ -39,8 +40,8 @@ fun User.toDTO(): UserDTO {
             this.nameLogin,
             this.email,
             this.password,
-            this.cellPhone,
-            this.patient.toDTO()
+            this.cellPhone
+//            this.patient.toDTO()
     )
 
     return userDTO

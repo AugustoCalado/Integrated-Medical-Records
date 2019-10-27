@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.dto.MedicalExamResultDTO
 import java.time.LocalDate
 import javax.persistence.*
@@ -17,6 +18,7 @@ data class MedicalExamResult(
 
         @Column(name = "RESULT_GENERATION_DATA")
         @NotNull
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val resultGenerationData: LocalDate
 
 ) {

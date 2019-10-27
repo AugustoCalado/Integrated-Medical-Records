@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain.dto
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.MedicalExam
 import java.io.Serializable
 import java.time.LocalDate
@@ -13,6 +14,7 @@ class MedicalExamDTO (
 
         val examObservation: String,
 
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val prescriptionDate: LocalDate
 
 ) : Serializable {

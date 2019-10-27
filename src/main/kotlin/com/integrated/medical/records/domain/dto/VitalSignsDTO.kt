@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain.dto
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import java.io.Serializable
 import java.time.LocalDate
 
@@ -25,6 +26,7 @@ class VitalSignsDTO(
 
         val height: Double,
 
+        @JsonFormat(pattern = "yyyy::MM::dd")
         val measurementDate: LocalDate,
 
         val medicalRecord: MedicalRecordDTO

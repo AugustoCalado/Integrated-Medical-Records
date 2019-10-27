@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain.dto
 
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.integrated.medical.records.domain.PatientVaccines
 import java.io.Serializable
 import java.time.LocalDate
@@ -12,6 +13,7 @@ class PatientVaccinesDTO(
 
         var vaccine: VaccinesDTO,
 
+        @JsonFormat(pattern = "yyyy::MM::dd")
         var dataVaccine: LocalDate,
 
         var placeVaccineApplied: String?

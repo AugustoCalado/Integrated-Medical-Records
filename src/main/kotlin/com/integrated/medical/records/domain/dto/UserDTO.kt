@@ -12,9 +12,9 @@ class UserDTO(
 
         var password: String = "",
 
-        var cellPhone: String? = "",
+        var cellPhone: String? = ""
 
-        val patient: PatientDTO? = null
+//        val patient: PatientDTO? = null
 
 ) : Serializable {
 
@@ -30,7 +30,7 @@ fun UserDTO.toEntity() : User {
             this.password,
             this.cellPhone
     )
-    user.patient = this.patient!!.toEntity()
+//    user.patient = this.patient!!.toEntity()
 
     return user
 }

@@ -1,13 +1,12 @@
 package com.integrated.medical.records.domain
 
 import com.integrated.medical.records.domain.dto.EmergencyCardDTO
-import javax.persistence.Column
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import kotlin.streams.toList
 
+@Entity
+@Table(name = "EMERGENCY_CARD", schema = "MEDICAL_RECORDS")
 data class EmergencyCard(
 
         @Id

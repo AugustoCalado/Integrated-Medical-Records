@@ -17,7 +17,7 @@ class VaccineServiceImpl(val vaccineRepository: VaccineRepository) : VaccineServ
         return listOfVaccines.toList().toDTO()
 
     }
-
+    @Throws(ObjectNotFoundException::class)
     override fun getVaccine(idVaccine: Int): VaccinesDTO? {
 
         val vaccine = vaccineRepository.findById(idVaccine).orElseThrow {
@@ -27,6 +27,7 @@ class VaccineServiceImpl(val vaccineRepository: VaccineRepository) : VaccineServ
         return vaccine.toDTO()
     }
 
+    @Throws(ObjectNotFoundException::class)
     override fun updateVaccine(vaccinesDTO: VaccinesDTO): VaccinesDTO {
         vaccineRepository.findById(vaccinesDTO.idVaccine).orElseThrow {
             throw ObjectNotFoundException("Emergency Card not found")
@@ -40,6 +41,7 @@ class VaccineServiceImpl(val vaccineRepository: VaccineRepository) : VaccineServ
     }
 
     override fun deleteVaccine(vaccinesDTO: VaccinesDTO) {
+        //TODO induce an error to test functionality
         vaccineRepository.deleteById(vaccinesDTO.idVaccine)
     }
 

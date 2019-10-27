@@ -29,6 +29,14 @@ class EmergencyCardServiceImpl(
         return emptyList()
     }
 
+    override fun getEmergencyCardSingleItem(idEmergencyCardItem: Int): EmergencyCardDTO {
+
+        val emergencyCard = emergencyCardRepository.findById(idEmergencyCardItem).orElseThrow {
+            ObjectNotFoundException("Emergency Card not found")
+        }
+        return emergencyCard.toDTO()
+    }
+
     @Throws(ObjectNotFoundException::class)
     override fun insertEmergencyCardItem(patientCPF: String, emergencyCardItem: EmergencyCardDTO): PatientDTO {
 

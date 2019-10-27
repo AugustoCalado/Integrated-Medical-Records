@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 class EmergencyCardController(val emergencyCardService: EmergencyCardService) {
 
 
-    @GetMapping(value = "/get-cards")
+    @GetMapping(value = "/get-all-cards")
     fun getEmergencyCardsOfPatient(@RequestParam(value = "cpf") patientCPF: String): ResponseEntity<*> {
 
         return try {
@@ -26,6 +26,16 @@ class EmergencyCardController(val emergencyCardService: EmergencyCardService) {
                 }
                 else -> ResponseEntity(ex.message, HttpStatus.INTERNAL_SERVER_ERROR)
             }
+        }
+    }
+
+    @GetMapping(value = "/get-card")
+    fun getEmergencyCardItem(@RequestParam(value = "idEmergencyCard") idEmergencyCard: Int): ResponseEntity<*> {
+        return try {
+            val cardResponse = emergencyCardService.getEmergencyCardSingleItem(idEmergencyCard)
+            ResponseEntity(cardResponse, HttpStatus.OK)
+        } catch (ex: ObjectNotFoundException) {
+            return ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
         }
     }
 

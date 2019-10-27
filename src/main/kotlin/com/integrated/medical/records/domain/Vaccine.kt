@@ -1,5 +1,6 @@
 package com.integrated.medical.records.domain
 
+import com.integrated.medical.records.domain.dto.VaccinesDTO
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
@@ -21,7 +22,14 @@ data class Vaccine(
 
         @Column(name = "N_DOSES", length = 2)
         val numberDoses: Int?
-) {
-    //@OneToMany(mappedBy = "vaccine")
-    //lateinit var patientVaccines: List<PatientVaccines>
+)
+
+fun Vaccine.toDTO(): VaccinesDTO {
+    var vaccineDTO = VaccinesDTO(
+            this.idVaccine,
+            this.name,
+            this.description.orEmpty(),
+            this.numberDoses ?: 0
+    )
+    return vaccineDTO
 }

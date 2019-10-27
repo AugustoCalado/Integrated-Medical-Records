@@ -33,7 +33,7 @@ class PatientImmunizationController(
 
     @ApiOperation(value = "Get a specific vaccine of a patient")
     @GetMapping("/patient-immunization", produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getPattientImmunization(
+    fun getPatientImmunization(
             @RequestParam(name = "idPatient", required = true) idPatient: Int,
             @RequestParam(name = "idPatientVaccine", required = true) idPatientVaccines: Int
     ): ResponseEntity<*> {
@@ -61,7 +61,7 @@ class PatientImmunizationController(
 
     @ApiOperation(value = "Delete patient vaccine")
     @DeleteMapping("/patient-immunization/delete}")
-    fun deletePatientVaccine(
+    fun deletePatientImmunization(
             @RequestParam(name = "cpfPatient", required = true) cpfPatient: String,
             @RequestParam(name = "idPatientVaccine", required = true) idPatientVaccines: Int
 

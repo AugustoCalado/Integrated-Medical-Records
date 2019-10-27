@@ -26,7 +26,7 @@ class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
     }
 
     @GetMapping(value = "/get-record")
-    fun getEmergencyCardItem(@RequestParam(value = "idMedicalRecord") idMedicalRecord: Int): ResponseEntity<*> {
+    fun getMedicalRecord(@RequestParam(value = "idMedicalRecord") idMedicalRecord: Int): ResponseEntity<*> {
 
         return try {
             val medicalRecordResponse = medicalRecordService.getMedicalRecord(idMedicalRecord)
@@ -50,13 +50,8 @@ class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
         }
     }
 
-    @PostMapping("/medical-record/save")
-    fun saveMedicalRecord(@RequestBody medicalRecord: MedicalRecordDTO): ResponseEntity<String> {
-        return ResponseEntity(HttpStatus.ACCEPTED)
-    }
-
     @DeleteMapping
-    fun deleteVaccine(@RequestParam(required = true) idMedicalRecord: Int): ResponseEntity<String> {
+    fun deleteMedicalRecord(@RequestParam(required = true) idMedicalRecord: Int): ResponseEntity<String> {
 
         return try {
             medicalRecordService.deleteMedicalRecord(idMedicalRecord)

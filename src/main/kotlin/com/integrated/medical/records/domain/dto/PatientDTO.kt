@@ -26,6 +26,10 @@ class PatientDTO(
     var emergencyCard: MutableList<EmergencyCardDTO>? = mutableListOf()
 }
 
+fun List<PatientDTO>.toDTO(): List<Patient> {
+    return map { it.toEntity() }
+}
+
 fun PatientDTO.toEntity(): Patient {
     var patient = Patient(
             this.idPatient,

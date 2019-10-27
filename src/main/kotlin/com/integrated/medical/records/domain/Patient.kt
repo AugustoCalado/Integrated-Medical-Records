@@ -55,6 +55,11 @@ data class Patient(
 
 }
 
+
+fun List<Patient>.toDTO(): List<PatientDTO> {
+    return map { it.toDTO() }
+}
+
 fun Patient.toDTO(): PatientDTO {
     var patientDTO = PatientDTO(
             this.idPatient,

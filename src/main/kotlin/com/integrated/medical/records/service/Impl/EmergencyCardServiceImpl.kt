@@ -49,5 +49,10 @@ class EmergencyCardServiceImpl(
         return emergencyCardRepository.save(emergencyCardItemDTO.toEntity()).toDTO()
     }
 
+    override fun deleteEmergencyCardItem(idEmergencyCardItem: Int) {
+        //TODO induce an error to test functionality
+        emergencyCardRepository.deleteById(idEmergencyCardItem)
+    }
+
 
 }

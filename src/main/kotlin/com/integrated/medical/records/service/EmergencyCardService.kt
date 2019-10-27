@@ -9,4 +9,5 @@ interface EmergencyCardService {
     fun getEmergencyCardItens(patientCPF: String): List<EmergencyCardDTO>
     fun insertEmergencyCardItem(patientCPF: String, emergencyCardItem: EmergencyCardDTO): PatientDTO
     fun updateEmergencyCardItem(emergencyCardItem: EmergencyCardDTO): EmergencyCardDTO
+    fun deleteEmergencyCardItem(idEmergencyCardItem: Int)
 }

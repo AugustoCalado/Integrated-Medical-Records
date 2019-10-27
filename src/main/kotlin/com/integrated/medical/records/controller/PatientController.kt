@@ -1,7 +1,6 @@
 package com.integrated.medical.records.controller
 
 import com.integrated.medical.records.domain.dto.PatientDTO
-import com.integrated.medical.records.domain.dto.PatientHistoricDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.exception.UpdateException
 import com.integrated.medical.records.service.PatientService
@@ -29,29 +28,26 @@ class PatientController(
         }
     }
 
+    @PostMapping("/insert")
+    fun insertPatient(@RequestBody(required = true) patientDTO: PatientDTO): ResponseEntity<String> {
+        return try {
+            val patientResponse = patientService.addNewPatient(patientDTO)
+            ResponseEntity(HttpStatus.OK)
+        } catch (ex: Exception) {
+            ResponseEntity(ex.message, HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
     @PostMapping("/update-information/{cpf}")
     fun updatePatientInformation(
             @RequestBody(required = true) patientDTO: PatientDTO,
             @PathVariable(name = "cpf", required = true) cpf: String
-    ): ResponseEntity<String> {
+    ): ResponseEntity<*> {
         return try {
-            patientService.updatePatient(patientDTO, cpf)
-            ResponseEntity(HttpStatus.OK)
+            val patientUpdated = patientService.updatePatient(patientDTO, cpf)
+            ResponseEntity(patientUpdated, HttpStatus.OK)
         } catch (ex: UpdateException) {
-            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
-        }
-    }
-
-    @PostMapping("/add-historic/{cpf}")
-    fun addNewPatientHistoric(
-            @RequestBody(required = true) patientHistoricDTO: PatientHistoricDTO,
-            @PathVariable(name = "cpf", required = true) cpf: String
-    ): ResponseEntity<String> {
-        return try {
-            patientService.updatePatientHistoric(patientHistoricDTO, cpf)
-            ResponseEntity(HttpStatus.OK)
-        } catch (ex: UpdateException) {
-            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+            ResponseEntity(ex.message, HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
 }

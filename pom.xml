@@ -19,6 +19,50 @@
 		<kotlin.version>1.2.71</kotlin.version>
 	</properties>
 
+	<build>
+		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<configuration>
+					<args>
+						<arg>-Xjsr305=strict</arg>
+					</args>
+					<compilerPlugins>
+						<plugin>spring</plugin>
+						<plugin>jpa</plugin>
+						<plugin>no-arg</plugin>
+					</compilerPlugins>
+					<pluginOptions>
+						<option>no-arg:annotation=com.integrated.medical.NoArg</option>
+						<!-- Call instance initializers in the synthetic constructor -->
+						<!-- <option>no-arg:invokeInitializers=true</option> -->
+					</pluginOptions>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-allopen</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-noarg</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+
 	<dependencies>
 
 		<dependency>
@@ -98,50 +142,12 @@
 		</dependency>
 		<!--End Jackson-Databind-->
 
+		<!--PostGresql-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<!--PostGresql-->
 	</dependencies>
-
-	<build>
-		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<artifactId>kotlin-maven-plugin</artifactId>
-				<configuration>
-					<args>
-						<arg>-Xjsr305=strict</arg>
-					</args>
-					<compilerPlugins>
-						<plugin>spring</plugin>
-						<plugin>jpa</plugin>
-						<plugin>no-arg</plugin>
-					</compilerPlugins>
-					<pluginOptions>
-						<option>no-arg:annotation=com.integrated.medical.NoArg</option>
-						<!-- Call instance initializers in the synthetic constructor -->
-						<!-- <option>no-arg:invokeInitializers=true</option> -->
-					</pluginOptions>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.jetbrains.kotlin</groupId>
-						<artifactId>kotlin-maven-allopen</artifactId>
-						<version>${kotlin.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.jetbrains.kotlin</groupId>
-						<artifactId>kotlin-maven-noarg</artifactId>
-						<version>${kotlin.version}</version>
-					</dependency>
-
-				</dependencies>
-			</plugin>
-
-		</plugins>
-	</build>
 
 </project>

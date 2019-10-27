@@ -1,22 +1,56 @@
 package com.integrated.medical.records.service.Impl
 
+import com.integrated.medical.records.domain.PatientVaccines
+import com.integrated.medical.records.domain.dto.PatientDTO
 import com.integrated.medical.records.domain.dto.PatientVaccinesDTO
+import com.integrated.medical.records.domain.dto.toEntity
+import com.integrated.medical.records.domain.toDTO
+import com.integrated.medical.records.exception.ObjectNotFoundException
+import com.integrated.medical.records.repository.PatientRepository
+import com.integrated.medical.records.repository.PatientVaccinesRepository
 import com.integrated.medical.records.service.PatientImmunizationService
+import org.springframework.stereotype.Service
 
-class PatientImmunizationServiceImpl : PatientImmunizationService {
+@Service
+class PatientImmunizationServiceImpl(
+        val patientRepository: PatientRepository,
+        val patientVaccinesRepository: PatientVaccinesRepository
+) : PatientImmunizationService {
+
     override fun findAllPatientImmunization(cpf: String): List<PatientVaccinesDTO> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        val patient = patientRepository.findByCpf(cpf)
+                ?: throw ObjectNotFoundException("Patient not found")
+        patient.patientVaccines?.let {
+            return PatientVaccines.entityListToDtoList(it)
+        }
+        return emptyList()
     }
 
-    override fun insertPatientImmunization() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun insertPatientImmunization(cpf: String, patientVaccinesDTO: PatientVaccinesDTO): PatientDTO {
+
+        val patient = patientRepository.findByCpf(cpf)
+                ?: throw ObjectNotFoundException("Patient not found")
+        patient.patientVaccines?.let {
+            it.add(patientVaccinesDTO.toEntity())
+        }
+        return patientRepository.save(patient).toDTO()
     }
 
     override fun findPatientImmunization(idPatient: Int, idPatientVaccines: Int): PatientVaccinesDTO {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        val patientVaccines = patientVaccinesRepository.findById(idPatientVaccines).orElseThrow {
+            throw ObjectNotFoundException("PatientImmunization not found")
+        }
+
+        return patientVaccines.toDTO()
     }
 
-    override fun deletePattientImmunization() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    @Throws(Exception::class)
+    override fun deletePattientImmunization(cpf: String, idPatientVaccines: Int): PatientDTO {
+        //TODO induce an error to test functionality
+        patientVaccinesRepository.deleteById(idPatientVaccines)
+        val patient = patientRepository.findByCpf(cpf) ?: throw ObjectNotFoundException("Patient not found")
+        return patient.toDTO()
     }
 }

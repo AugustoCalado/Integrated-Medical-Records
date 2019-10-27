@@ -1,7 +1,6 @@
 package com.integrated.medical.records.domain
 
 import com.integrated.medical.records.domain.dto.PatientVaccinesDTO
-import com.integrated.medical.records.domain.dto.toEntity
 import java.io.Serializable
 import java.time.LocalDate
 import javax.persistence.*
@@ -22,11 +21,6 @@ data class PatientVaccines(
         @JoinColumn(name = "ID_VACCINE")
         @NotBlank
         val vaccine: Vaccine,
-
-        @ManyToOne
-        @JoinColumn(name = "ID_PATIENT")
-        @NotBlank
-        val patient: Patient,
 
         @Column(name = "DATA_IMMUNIZATION")
         @NotBlank
@@ -50,7 +44,6 @@ fun PatientVaccines.toDTO(): PatientVaccinesDTO {
     var patientVaccinesDTO = PatientVaccinesDTO(
             this.idPatientVaccines,
             this.vaccine.toDTO(),
-            this.patient.toDTO(),
             this.dataVaccine,
             this.placeVaccineApplied.orEmpty()
     )

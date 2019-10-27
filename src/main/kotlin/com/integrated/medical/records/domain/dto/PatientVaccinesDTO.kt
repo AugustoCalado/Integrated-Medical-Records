@@ -6,13 +6,11 @@ import java.time.LocalDate
 import kotlin.streams.toList
 
 
-data class PatientVaccinesDTO(
+class PatientVaccinesDTO(
 
         var idPatientVaccines: Int,
 
         var vaccine: VaccinesDTO,
-
-        var patient: PatientDTO,
 
         var dataVaccine: LocalDate,
 
@@ -33,7 +31,6 @@ fun PatientVaccinesDTO.toEntity(): PatientVaccines {
     var patientVaccines = PatientVaccines(
             this.idPatientVaccines,
             this.vaccine.toEntity(),
-            this.patient.toEntity(),
             this.dataVaccine,
             this.placeVaccineApplied.orEmpty()
     )

@@ -1,6 +1,5 @@
 package com.integrated.medical.records.domain.dto
 
-import com.integrated.medical.records.domain.EmergencyCard
 import com.integrated.medical.records.domain.Patient
 import com.integrated.medical.records.enums.GenderTypes
 import java.io.Serializable

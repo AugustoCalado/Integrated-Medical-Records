@@ -57,6 +57,16 @@ class EmergencyCardController(val emergencyCardService: EmergencyCardService) {
                 else -> ResponseEntity(ex.message, HttpStatus.INTERNAL_SERVER_ERROR)
             }
         }
-
     }
+
+    @DeleteMapping
+    fun deleteVaccine(@RequestParam(required = true) idEmergencyCard: Int): ResponseEntity<String> {
+        return try {
+            emergencyCardService.deleteEmergencyCardItem(idEmergencyCard)
+            ResponseEntity(HttpStatus.OK)
+        } catch (ex: ObjectNotFoundException) {
+            ResponseEntity(ex.message, HttpStatus.NOT_FOUND)
+        }
+    }
+
 }

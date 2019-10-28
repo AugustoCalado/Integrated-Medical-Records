@@ -1,5 +1,6 @@
 package com.integrated.medical.records.service.Impl
 
+import com.integrated.medical.records.domain.EmergencyCard
 import com.integrated.medical.records.domain.PatientHistoric
 import com.integrated.medical.records.domain.dto.PatientDTO
 import com.integrated.medical.records.domain.dto.PatientHistoricDTO
@@ -49,6 +50,10 @@ class PatientServiceImpl(val patientRepository: PatientRepository) : PatientServ
         patientRepository.save(patient.toEntity())
     }
 
+    override fun getAllPatientsFromDB(): List<PatientDTO> {
+        return patientRepository.findAll().toList().toDTO()
+    }
+
 //
     @Throws(ObjectNotFoundException::class)
     override fun addPatientHistoric(patientHistoricDTO: PatientHistoricDTO, cpf: String): PatientDTO {
@@ -72,4 +77,12 @@ class PatientServiceImpl(val patientRepository: PatientRepository) : PatientServ
         return emptyList()
     }
 
+    override fun getAllPatientHistoricFromDB(): List<List<PatientHistoricDTO>> {
+        return patientRepository.findAll().toList().mapNotNull {patient ->
+            patient.patientHistoric?.let {
+                PatientHistoric.entityListToDtoList(it)
+            }
+
+        }
+    }
 }

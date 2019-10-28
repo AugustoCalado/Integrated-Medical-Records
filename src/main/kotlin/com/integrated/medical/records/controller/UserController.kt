@@ -43,4 +43,9 @@ class UserController(
         }
         return ResponseEntity.ok("User update complete with success")
     }
+
+    @GetMapping(value = "get-all-test")
+    fun getAllUsersFromDB(): ResponseEntity<*> {
+        return ResponseEntity(userService.getAllUsersFromDB(), HttpStatus.OK)
+    }
 }

@@ -11,4 +11,5 @@ interface EmergencyCardService {
     fun insertEmergencyCardItem(patientCPF: String, emergencyCardItem: EmergencyCardDTO): PatientDTO
     fun updateEmergencyCardItem(emergencyCardItem: EmergencyCardDTO): EmergencyCardDTO
     fun deleteEmergencyCardItem(idEmergencyCardItem: Int)
+    fun getAllEmergencyCardsFromDB(): List<EmergencyCardDTO>
 }

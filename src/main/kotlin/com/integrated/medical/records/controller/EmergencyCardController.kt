@@ -79,4 +79,9 @@ class EmergencyCardController(val emergencyCardService: EmergencyCardService) {
         }
     }
 
+    @GetMapping(value = "get-all-test")
+    fun getAllEmergencyCardsFromDB(): ResponseEntity<*> {
+        return ResponseEntity(emergencyCardService.getAllEmergencyCardsFromDB(), HttpStatus.OK)
+    }
+
 }

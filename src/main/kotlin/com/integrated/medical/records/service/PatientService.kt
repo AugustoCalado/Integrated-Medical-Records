@@ -10,9 +10,13 @@ interface PatientService {
     fun findPatientByCpf(cpf: String): PatientDTO
     fun addNewPatient(patient: PatientDTO)
     fun updatePatient(patient: PatientDTO, cpf: String): PatientDTO
+    fun getAllPatientsFromDB(): List<PatientDTO>
+
+
 
     fun addPatientHistoric(patientHistoricDTO: PatientHistoricDTO, cpf: String): PatientDTO
     fun getPatientHistorics(cpf: String): List<PatientHistoricDTO>
+    fun getAllPatientHistoricFromDB(): List<List<PatientHistoricDTO>>
 
 //
 //    fun addPatientMedicalExam(patientHistoricDTO: PatientHistoricDTO, cpf: String)

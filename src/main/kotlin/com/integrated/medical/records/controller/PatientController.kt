@@ -50,4 +50,9 @@ class PatientController(
             ResponseEntity(ex.message, HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
+
+    @GetMapping(value = "get-all-test")
+    fun getAllPatientsFromDB(): ResponseEntity<*> {
+        return ResponseEntity(patientService.getAllPatientsFromDB(), HttpStatus.OK)
+    }
 }

@@ -74,5 +74,9 @@ class PatientImmunizationController(
         }
     }
 
+    @GetMapping(value = "get-all-test")
+    fun getAllPatientImmunizationFromDB(): ResponseEntity<*> {
+        return ResponseEntity(patientImmunizationService.getAllPatientImmunizationFromDB(), HttpStatus.OK)
+    }
 
 }

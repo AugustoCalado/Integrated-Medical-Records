@@ -11,4 +11,5 @@ interface MedicalRecordService {
     fun getMedicalRecord(idMedicalRecord: Int): MedicalRecordDTO
     fun insertMedicalRecord(patientCPF: String, medicalRecordDTO: MedicalRecordDTO): PatientDTO
     fun deleteMedicalRecord(idMedicalRecord: Int)
+    fun getAllMedicalRecordsFromDB(): List<MedicalRecordDTO>
 }

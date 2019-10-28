@@ -1,5 +1,7 @@
 package com.integrated.medical.records.service.Impl
 
+import com.integrated.medical.records.domain.EmergencyCard
+import com.integrated.medical.records.domain.User
 import com.integrated.medical.records.domain.dto.UserDTO
 import com.integrated.medical.records.domain.dto.toEntity
 import com.integrated.medical.records.domain.toDTO
@@ -37,4 +39,7 @@ class UserServiceImpl(val userRepository: UserRepository, val modelMapper: Model
         return userRepository.save(userUpdated.toEntity()).toDTO()
     }
 
+    override fun getAllUsersFromDB(): List<UserDTO> {
+        return userRepository.findAll().toList().toDTO()
+    }
 }

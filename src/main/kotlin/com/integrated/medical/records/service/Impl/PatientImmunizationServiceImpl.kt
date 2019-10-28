@@ -56,4 +56,8 @@ class PatientImmunizationServiceImpl(
         val patient = patientRepository.findByCpf(cpf) ?: throw ObjectNotFoundException("Patient not found")
         return patient.toDTO()
     }
+
+    override fun getAllPatientImmunizationFromDB(): List<PatientVaccinesDTO> {
+        return PatientVaccines.entityListToDtoList(patientVaccinesRepository.findAll().toMutableList())
+    }
 }

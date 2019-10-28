@@ -8,4 +8,5 @@ interface UserService {
     fun getUser(idUser: Int): UserDTO
     fun insertUser(userDTO: UserDTO): UserDTO
     fun update(userUpdated: UserDTO): UserDTO
+    fun getAllUsersFromDB(): List<UserDTO>
 }

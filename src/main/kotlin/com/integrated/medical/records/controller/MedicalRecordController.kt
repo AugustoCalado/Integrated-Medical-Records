@@ -61,4 +61,9 @@ class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
         }
     }
 
+    @GetMapping(value = "get-all-test")
+    fun getAllEmergencyCardsFromDB(): ResponseEntity<*> {
+        return ResponseEntity(medicalRecordService.getAllMedicalRecordsFromDB(), HttpStatus.OK)
+    }
+
 }

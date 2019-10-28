@@ -62,5 +62,7 @@ class EmergencyCardServiceImpl(
         emergencyCardRepository.deleteById(idEmergencyCardItem)
     }
 
-
+    override fun getAllEmergencyCardsFromDB(): List<EmergencyCardDTO> {
+        return EmergencyCard.entityListToDtoList(emergencyCardRepository.findAll().toMutableList())
+    }
 }

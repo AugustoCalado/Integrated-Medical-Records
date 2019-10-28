@@ -33,6 +33,10 @@ data class User(
     lateinit var patient: Patient*/
 }
 
+fun List<User>.toDTO(): List<UserDTO> {
+    return this.map { it.toDTO() }
+}
+
 fun User.toDTO(): UserDTO {
 
     var userDTO = UserDTO(

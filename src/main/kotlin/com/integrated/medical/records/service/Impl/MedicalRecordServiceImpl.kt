@@ -1,5 +1,6 @@
 package com.integrated.medical.records.service.Impl
 
+import com.integrated.medical.records.domain.EmergencyCard
 import com.integrated.medical.records.domain.MedicalRecord
 import com.integrated.medical.records.domain.dto.MedicalRecordDTO
 import com.integrated.medical.records.domain.dto.PatientDTO
@@ -53,5 +54,7 @@ class MedicalRecordServiceImpl(
         medicalRecordRepository.deleteById(idMedicalRecord)
     }
 
-
+    override fun getAllMedicalRecordsFromDB(): List<MedicalRecordDTO> {
+        return MedicalRecord.entityListToDtoList(medicalRecordRepository.findAll().toMutableList())
+    }
 }

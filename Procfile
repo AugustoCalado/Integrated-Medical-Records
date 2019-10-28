@@ -1,1 +1,0 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/Integrated-Medical-Records-0.0.2-SNAPSHOT.jar

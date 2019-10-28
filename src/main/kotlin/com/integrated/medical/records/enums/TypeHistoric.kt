@@ -5,6 +5,6 @@ enum class TypeHistoric(val type: String) {
     FAMILY("FAMILY"),
     LIFE("LIFE"),
     PATHOLOGIC("PATHOLOGIC"),
-    PHYSIOLOGICAL("PPHYSIOLOGICAL ");
+    PHYSIOLOGICAL("PHYSIOLOGICAL ");
 
 }

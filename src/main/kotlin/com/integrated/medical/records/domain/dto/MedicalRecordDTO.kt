@@ -15,18 +15,6 @@ class MedicalRecordDTO(
 
         val currentDiseaseInfo: String,
 
-        val peHeadNeck: String?,
-
-        val peBreathingApparatus: String?,
-
-        val peHeartSystem: String?,
-
-        val peBodyMembers: String?,
-
-        val peBonesJoints: String?,
-
-        val peNeurological: String?,
-
         val diagnostic: String,
 
         val prescription: String,
@@ -39,6 +27,7 @@ class MedicalRecordDTO(
 ) {
 
     var medicalExam: MutableList<MedicalExamDTO>? = mutableListOf()
+    var physicalExam: MutableList<PhysicalExamDTO> = mutableListOf()
 
     companion object {
         fun dtoListToEntityList(dtoList: MutableList<MedicalRecordDTO>): MutableList<MedicalRecord> {
@@ -57,12 +46,6 @@ fun MedicalRecordDTO.toEntity(): MedicalRecord {
             this.crm,
             this.mainComplain,
             this.currentDiseaseInfo,
-            this.peHeadNeck.orEmpty(),
-            this.peBreathingApparatus.orEmpty(),
-            this.peHeartSystem.orEmpty(),
-            this.peBodyMembers.orEmpty(),
-            this.peBonesJoints.orEmpty(),
-            this.peNeurological.orEmpty(),
             this.diagnostic,
             this.prescription,
             this.medicalRecordDate,
@@ -72,6 +55,10 @@ fun MedicalRecordDTO.toEntity(): MedicalRecord {
     this.medicalExam?.let {
         medicalRecord.medicalExam = MedicalExamDTO.dtoListToEntityList(it)
 
+    }
+
+    this.physicalExam?.let {
+        medicalRecord.physicalExam = this.physicalExam.toEntity().toMutableList()
     }
 
     return medicalRecord

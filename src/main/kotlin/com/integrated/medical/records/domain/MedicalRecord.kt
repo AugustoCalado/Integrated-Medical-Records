@@ -29,24 +29,6 @@ data class MedicalRecord(
         @NotNull
         val currentDiseaseInfo: String,
 
-        @Column(name = "PE_HEAD_NECK", length = 750)
-        val peHeadNeck: String?,
-
-        @Column(name = "PE_BREATHING_APPARATUS", length = 750)
-        val peBreathingApparatus: String?,
-
-        @Column(name = "PE_HEART_SYSTEM", length = 750)
-        val peHeartSystem: String?,
-
-        @Column(name = "PE_BODY_MEMBERS", length = 750)
-        val peBodyMembers: String?,
-
-        @Column(name = "PE_BONES_JOINTS", length = 750)
-        val peBonesJoints: String?,
-
-        @Column(name = "PE_NEUROLOGICAL", length = 750)
-        val peNeurological: String?,
-
         @Column(name = "DIAGNOSTIC", length = 2050)
         @NotNull
         val diagnostic: String,
@@ -67,9 +49,15 @@ data class MedicalRecord(
 
 ) {
 
+
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "FK_PHYSICAL_EXAM")
+    var physicalExam: MutableList<PhysicalExam> = mutableListOf()
+
     @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "FK_MEDICAL_RECORD")
     var medicalExam: MutableList<MedicalExam>? = mutableListOf()
+
 
     companion object {
         fun entityListToDtoList(dtoList: MutableList<MedicalRecord>): MutableList<MedicalRecordDTO> {
@@ -88,12 +76,6 @@ fun MedicalRecord.toDTO(): MedicalRecordDTO {
             this.crm,
             this.mainComplain,
             this.currentDiseaseInfo,
-            this.peHeadNeck.orEmpty(),
-            this.peBreathingApparatus.orEmpty(),
-            this.peHeartSystem.orEmpty(),
-            this.peBodyMembers.orEmpty(),
-            this.peBonesJoints.orEmpty(),
-            this.peNeurological.orEmpty(),
             this.diagnostic,
             this.prescription,
             this.medicalRecordDate,
@@ -103,6 +85,10 @@ fun MedicalRecord.toDTO(): MedicalRecordDTO {
     this.medicalExam?.let {
         medicalRecordDTO.medicalExam = MedicalExam.entityListToDtoList(it)
 
+    }
+
+    this.physicalExam?.let {
+        medicalRecordDTO.physicalExam = this.physicalExam.toDTO().toMutableList()
     }
 
     return medicalRecordDTO

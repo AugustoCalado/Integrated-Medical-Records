@@ -2,10 +2,7 @@ package com.integrated.medical.records.domain
 
 import com.integrated.medical.records.domain.dto.PhysicalExamDTO
 import com.integrated.medical.records.domain.dto.VaccinesDTO
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 import javax.validation.constraints.NotNull
 
 @Entity
@@ -13,6 +10,8 @@ import javax.validation.constraints.NotNull
 data class PhysicalExam(
 
         @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "ID_PHYSICAL_EXAM", nullable = false, unique = true)
         val idPhysicalExam: Int,
 
         @Column(name = "NAME_PHYSICAL_EXAM", length = 500)

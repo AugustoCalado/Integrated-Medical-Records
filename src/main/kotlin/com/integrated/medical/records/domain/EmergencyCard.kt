@@ -1,6 +1,7 @@
 package com.integrated.medical.records.domain
 
 import com.integrated.medical.records.domain.dto.EmergencyCardDTO
+import com.integrated.medical.records.enums.EmergencyCardType
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 import kotlin.streams.toList
@@ -20,7 +21,13 @@ data class EmergencyCard(
 
         @NotBlank
         @Column(name = "OBSERVATIONS", length = 500)
-        val observations: String
+        val observations: String,
+
+
+        @NotBlank
+        @Column(name = "TYPE_HISTORIC")
+        @Enumerated(EnumType.STRING)
+        val typeHistoric: EmergencyCardType
 
 ) {
 
@@ -38,7 +45,8 @@ fun EmergencyCard.toDTO(): EmergencyCardDTO {
     var emergencyCardDTO  = EmergencyCardDTO(
             this.idEmergencyCardDTO,
             this.declaration,
-            this.observations
+            this.observations,
+            this.typeHistoric
     )
     return emergencyCardDTO
 }

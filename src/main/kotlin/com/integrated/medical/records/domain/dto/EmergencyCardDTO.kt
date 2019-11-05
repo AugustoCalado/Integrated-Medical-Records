@@ -1,6 +1,7 @@
 package com.integrated.medical.records.domain.dto
 
 import com.integrated.medical.records.domain.EmergencyCard
+import com.integrated.medical.records.enums.EmergencyCardType
 
 import kotlin.streams.toList
 
@@ -10,7 +11,9 @@ class EmergencyCardDTO(
 
         val declaration: String,
 
-        val observations: String
+        val observations: String,
+
+        val emergencyCardType: EmergencyCardType
 
 ) {
 
@@ -28,7 +31,8 @@ fun EmergencyCardDTO.toEntity(): EmergencyCard {
     var emergencyCard = EmergencyCard(
             this.idEmergencyCardDTO,
             this.declaration,
-            this.observations
+            this.observations,
+            this.emergencyCardType
     )
     return emergencyCard
 }

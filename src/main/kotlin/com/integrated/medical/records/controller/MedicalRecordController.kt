@@ -4,6 +4,7 @@ import com.integrated.medical.records.domain.dto.MedicalRecordDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.service.MedicalRecordService
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*
 @Api(value = "Medical Record Controller API")
 @RequestMapping(value = "/medical-record")
 class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
+
 
     @GetMapping(value = "/get-all-records")
     fun getAllMedicalRecordsOfPatient(@RequestParam(value = "patientCPF") patientCPF: String): ResponseEntity<*> {
@@ -25,6 +27,7 @@ class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
         }
     }
 
+    @ApiOperation(value = "View a list of available employees", response = MedicalRecordDTO::class)
     @GetMapping(value = "/get-record")
     fun getMedicalRecord(@RequestParam(value = "idMedicalRecord") idMedicalRecord: Int): ResponseEntity<*> {
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping(value = "/medical-record")
 class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
 
-
+    @ApiOperation(value = " get all records",response = MedicalRecordDTO::class, responseContainer = "List")
     @GetMapping(value = "/get-all-records")
     fun getAllMedicalRecordsOfPatient(@RequestParam(value = "patientCPF") patientCPF: String): ResponseEntity<*> {
 
@@ -27,7 +27,7 @@ class MedicalRecordController(val medicalRecordService: MedicalRecordService) {
         }
     }
 
-    @ApiOperation(value = "View a list of available employees", response = MedicalRecordDTO::class)
+    @ApiOperation(value = " get a record given a CPF",response = MedicalRecordDTO::class)
     @GetMapping(value = "/get-record")
     fun getMedicalRecord(@RequestParam(value = "idMedicalRecord") idMedicalRecord: Int): ResponseEntity<*> {
 

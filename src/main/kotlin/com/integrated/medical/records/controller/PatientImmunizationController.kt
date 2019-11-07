@@ -21,7 +21,7 @@ class PatientImmunizationController(
     //TODO Introduce some way to authorize and authenticate
     //TODO include Swagger
 
-    @ApiOperation(value = "Get all vaccine of a patient given the ID")
+    @ApiOperation(value = "Get all vaccine of a patient given the ID", response = PatientVaccinesDTO::class, responseContainer = "List")
     @GetMapping("/patient-immunization/all", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getAllPatientImmunizations(
             @RequestParam(name = "cpf", required = true) cpf: String
@@ -74,6 +74,7 @@ class PatientImmunizationController(
         }
     }
 
+    @ApiOperation(value = "get all patient immunization", response = PatientVaccinesDTO::class, responseContainer = "List")
     @GetMapping(value = "get-all-test")
     fun getAllPatientImmunizationFromDB(): ResponseEntity<*> {
         return ResponseEntity(patientImmunizationService.getAllPatientImmunizationFromDB(), HttpStatus.OK)

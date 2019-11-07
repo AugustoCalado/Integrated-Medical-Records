@@ -1,9 +1,11 @@
 package com.integrated.medical.records.controller
 
+import com.integrated.medical.records.domain.dto.UserDTO
 import com.integrated.medical.records.domain.dto.VaccinesDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.service.VaccineService
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping(value = "/vaccine")
 class VaccineController(val vaccineService: VaccineService) {
 
+    @ApiOperation(value = "get all vaccines", response = VaccinesDTO::class, responseContainer = "List")
     @GetMapping("/get/all")
     fun getAllVaccines(): ResponseEntity<List<VaccinesDTO>> {
 

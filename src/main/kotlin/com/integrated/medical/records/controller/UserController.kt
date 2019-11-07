@@ -1,8 +1,10 @@
 package com.integrated.medical.records.controller
 
+import com.integrated.medical.records.domain.dto.PatientVaccinesDTO
 import com.integrated.medical.records.domain.dto.UserDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.service.UserService
+import io.swagger.annotations.ApiOperation
 import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -44,6 +46,8 @@ class UserController(
         return ResponseEntity.ok("User update complete with success")
     }
 
+
+    @ApiOperation(value = "get all users", response = UserDTO::class, responseContainer = "List")
     @GetMapping(value = "get-all-test")
     fun getAllUsersFromDB(): ResponseEntity<*> {
         return ResponseEntity(userService.getAllUsersFromDB(), HttpStatus.OK)

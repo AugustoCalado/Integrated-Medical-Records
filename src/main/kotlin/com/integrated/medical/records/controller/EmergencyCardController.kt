@@ -3,6 +3,7 @@ package com.integrated.medical.records.controller
 import com.integrated.medical.records.domain.dto.EmergencyCardDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.service.EmergencyCardService
+import io.swagger.annotations.ApiOperation
 import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping(value = "/emergency-card")
 class EmergencyCardController(val emergencyCardService: EmergencyCardService) {
 
-
+    @ApiOperation(value = " get all EmergencyCards",response = EmergencyCardDTO::class, responseContainer = "List")
     @GetMapping(value = "/get-all-cards")
     fun getEmergencyCardsOfPatient(@RequestParam(value = "cpf") patientCPF: String): ResponseEntity<*> {
 

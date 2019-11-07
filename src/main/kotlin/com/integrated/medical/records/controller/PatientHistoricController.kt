@@ -1,10 +1,12 @@
 package com.integrated.medical.records.controller
 
+import com.integrated.medical.records.domain.dto.EmergencyCardDTO
 import com.integrated.medical.records.domain.dto.PatientHistoricDTO
 import com.integrated.medical.records.exception.ObjectNotFoundException
 import com.integrated.medical.records.exception.UpdateException
 import com.integrated.medical.records.service.PatientService
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.data.rest.webmvc.RepositoryRestController
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -40,7 +42,7 @@ class PatientHistoricController(
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
         }
     }
-
+    @ApiOperation(value = " get all Patient Histories",response = PatientHistoricDTO::class, responseContainer = "List")
     @GetMapping(value = "get-all-test")
     fun getAllPatientHistoricsFromDB(): ResponseEntity<*> {
         return ResponseEntity(patientService.getAllPatientHistoricFromDB(), HttpStatus.OK)

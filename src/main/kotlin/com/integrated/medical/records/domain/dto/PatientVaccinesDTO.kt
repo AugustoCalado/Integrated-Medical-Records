@@ -13,10 +13,10 @@ class PatientVaccinesDTO(
 
         var vaccine: VaccinesDTO,
 
-        var vaccineLot:String,
+        var vaccineLot:String?,
 
         @JsonFormat(pattern = "yyyy::MM::dd")
-        var vaccineExpirationDate:LocalDate,
+        var vaccineExpirationDate:LocalDate?,
 
         @JsonFormat(pattern = "yyyy::MM::dd")
         var dataVaccine: LocalDate,

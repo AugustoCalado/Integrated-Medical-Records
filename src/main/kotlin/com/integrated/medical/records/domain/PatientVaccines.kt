@@ -24,11 +24,11 @@ data class PatientVaccines(
         val vaccine: Vaccine,
 
         @Column(name = "VACCINE_LOT", length = 9)
-        var vaccineLot: String,
+        var vaccineLot: String?,
 
         @Column(name = "VACCINE_EXPIRATION_DATE")
         @JsonFormat(pattern = "yyyy::MM::dd")
-        var vaccineExpirationDate: LocalDate,
+        var vaccineExpirationDate: LocalDate?,
 
         @Column(name = "DATA_IMMUNIZATION")
         @NotBlank

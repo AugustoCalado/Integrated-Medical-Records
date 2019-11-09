@@ -2,7 +2,7 @@ package com.integrated.medical.records.enums
 
 enum class EmergencyCardType(val type: String) {
 
-    ALLERGY("allergy"),
+    ALLERGY("ALLERGY"),
     DISEASE("DISEASE"),
     GENERAL_INFORMATION("GENERAL_INFORMATION");
 

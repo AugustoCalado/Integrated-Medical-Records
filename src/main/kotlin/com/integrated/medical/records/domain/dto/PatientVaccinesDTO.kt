@@ -13,6 +13,11 @@ class PatientVaccinesDTO(
 
         var vaccine: VaccinesDTO,
 
+        var vaccineLot:String,
+
+        @JsonFormat(pattern = "yyyy::MM::dd")
+        var expirationDate:LocalDate,
+
         @JsonFormat(pattern = "yyyy::MM::dd")
         var dataVaccine: LocalDate,
 
@@ -33,6 +38,8 @@ fun PatientVaccinesDTO.toEntity(): PatientVaccines {
     var patientVaccines = PatientVaccines(
             this.idPatientVaccines,
             this.vaccine.toEntity(),
+            this.vaccineLot,
+            this.expirationDate,
             this.dataVaccine,
             this.placeVaccineApplied.orEmpty()
     )

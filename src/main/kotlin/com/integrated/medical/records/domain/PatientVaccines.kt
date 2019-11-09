@@ -23,6 +23,13 @@ data class PatientVaccines(
         @NotBlank
         val vaccine: Vaccine,
 
+        @Column(name = "VACCINE_LOT", length = 9)
+        var vaccineLot: String,
+
+        @Column(name = "EXPIRATION_DATE")
+        @JsonFormat(pattern = "yyyy::MM::dd")
+        var expirationDate: LocalDate,
+
         @Column(name = "DATA_IMMUNIZATION")
         @NotBlank
         @JsonFormat(pattern = "yyyy::MM::dd")
@@ -46,6 +53,8 @@ fun PatientVaccines.toDTO(): PatientVaccinesDTO {
     var patientVaccinesDTO = PatientVaccinesDTO(
             this.idPatientVaccines,
             this.vaccine.toDTO(),
+            this.vaccineLot,
+            this.expirationDate,
             this.dataVaccine,
             this.placeVaccineApplied.orEmpty()
     )

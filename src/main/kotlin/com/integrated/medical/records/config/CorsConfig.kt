@@ -14,11 +14,22 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean
 @Configuration
 class CorsConfig {
 
+//    @Bean
+//    fun corsConfigurationSource(): CorsConfigurationSource {
+//        val source = UrlBasedCorsConfigurationSource()
+//        source.registerCorsConfiguration("/**", CorsConfiguration().applyPermitDefaultValues())
+//
+//        return source
+//    }
+
+
     @Bean
-    fun corsConfigurationSource(): CorsConfigurationSource {
+    fun corsConfigurationSource(): FilterRegistrationBean<*> {
         val source = UrlBasedCorsConfigurationSource()
         source.registerCorsConfiguration("/**", CorsConfiguration().applyPermitDefaultValues())
-        return source
+        val bean = FilterRegistrationBean(CorsFilter(source))
+        bean.setOrder(0)
+        return bean
     }
 
 //    @Bean
